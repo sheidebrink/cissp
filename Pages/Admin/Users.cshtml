@@ -26,6 +26,7 @@
                             <th>Email</th>
                             <th>Username</th>
                             <th>Status</th>
+                            <th>Passed</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,6 +47,16 @@
                                     }
                                 </td>
                                 <td>
+                                    @if (user.IsPassed)
+                                    {
+                                        <span class="badge bg-success">✓ Passed</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Not Passed</span>
+                                    }
+                                </td>
+                                <td>
                                     <form method="post" asp-page-handler="ToggleUser" class="d-inline">
                                         <input type="hidden" name="userId" value="@user.Id" />
                                         <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
@@ -56,6 +67,18 @@
                                         else
                                         {
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Disable this user?')">Disable</button>
+                                        }
+                                    </form>
+                                    <form method="post" asp-page-handler="TogglePassed" class="d-inline ms-1">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                        @if (user.IsPassed)
+                                        {
+                                            <button type="submit" class="btn btn-warning btn-sm">Unmark Passed</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-success btn-sm">Mark Passed</button>
                                         }
                                     </form>
                                 </td>

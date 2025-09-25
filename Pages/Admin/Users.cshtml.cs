@@ -50,5 +50,16 @@ namespace CisspTrainingApp.Pages.Admin
         {
             return RedirectToPage(new { searchTerm = SearchTerm });
         }
+
+        public async Task<IActionResult> OnPostTogglePassed(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                user.IsPassed = !user.IsPassed;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToPage(new { searchTerm = SearchTerm });
+        }
     }
 }

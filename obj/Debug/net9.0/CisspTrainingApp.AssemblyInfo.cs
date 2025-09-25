@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07b07e0e5e05d358936f48a87ff9647060ebf72a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c74878cdcefbf9c5b2221e1ec7047e01ef5fcf35")]
 [assembly: System.Reflection.AssemblyProductAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,21 +5,34 @@
 @{
     ApplicationUser? user = null;
     DateTime? testDate = null;
+    bool isPassed = false;
     
     try 
     {
         user = await UserManager.GetUserAsync(User);
         testDate = user?.ScheduledTestDate;
+        isPassed = user?.IsPassed ?? false;
     }
     catch
     {
         // Handle case where user session is stale
         user = null;
         testDate = null;
+        isPassed = false;
     }
 }
 
-@if (testDate.HasValue && testDate.Value > DateTime.Now)
+@if (isPassed)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <div class="text-center">
+            <h4>🎆 Congratulations! You passed your CISSP exam! 🎆</h4>
+            <p class="mb-0">Welcome to the certified information security professional community!</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+else if (testDate.HasValue && testDate.Value > DateTime.Now)
 {
     <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert" id="countdownBanner">
         <div class="row align-items-center">
@@ -94,9 +107,9 @@ else if (testDate.HasValue && testDate.Value <= DateTime.Now)
                 <div class="card-body">
                     <h5 class="card-title text-warning">🎆 Ready to Celebrate?</h5>
                     <p class="card-text">Passed your CISSP exam? Let's celebrate your achievement!</p>
-                    <button id="celebrateBtn" class="btn btn-warning btn-lg">
+                    <a href="/Shared/MarkPassed" class="btn btn-warning btn-lg">
                         🎉 I PASSED! 🎉
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
