@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <a class="navbar-brand" asp-area="" asp-page="/Dashboard">
                     <span class="kerbie-shield" style="font-size: 1.5em; position: relative; display: inline-block;">
                         🛡️
                         <span style="position: absolute; top: 3px; left: 40%; font-size: 0.3em; color: #333;">•</span>
@@ -50,6 +50,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Admin">Admin</a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                     <button class="btn btn-outline-secondary" id="theme-toggle" type="button">
                         🌙
                     </button>
@@ -61,6 +62,11 @@
         </nav>
     </header>
     <div class="container">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <partial name="_CountdownBanner" />
+        }
+        
         <div id="voice-status" class="alert alert-info" style="display: none; position: fixed; top: 80px; right: 20px; z-index: 1050; width: 300px;">
             🎤 Voice navigation active. Say "Kerbie Domain 1" to navigate.
         </div>

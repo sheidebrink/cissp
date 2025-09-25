@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .kerbie-shield {
+            transition: transform 0.3s ease;
+        }
+        .kerbie-shield:hover {
+            transform: scale(1.1);
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .voice-example {
+            background: rgba(0,0,0,0.05);
+            padding: 8px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="kerbie-shield" style="position: relative; display: inline-block;">
+                    🛡️
+                    <span style="position: absolute; top: 3px; left: 35%; font-size: 0.4em; color: white;">•</span>
+                    <span style="position: absolute; top: 3px; right: 35%; font-size: 0.4em; color: white;">•</span>
+                    <span style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-size: 0.3em; color: white;">‿</span>
+                </span>
+                <strong>Kerbie</strong>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/Identity/Account/Login">Sign In</a>
+                <a class="nav-link btn btn-primary text-white ms-2 px-3" href="/Identity/Account/Register">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 - Kerbie CISSP Training - Your AI Study Companion</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

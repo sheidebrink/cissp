@@ -1,0 +1,146 @@
+@page
+@model DashboardModel
+@{
+    ViewData["Title"] = "Dashboard - Kerbie";
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="display-3">
+            <span class="kerbie-shield" style="position: relative; display: inline-block;">
+                🛡️
+                <span style="position: absolute; top: 15px; left: 35%; font-size: 0.4em; color: #333;">•</span>
+                <span style="position: absolute; top: 15px; right: 35%; font-size: 0.4em; color: #333;">•</span>
+                <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); font-size: 0.35em; color: #333;">‿</span>
+            </span> 
+            <strong>Kerbie</strong>
+        </h1>
+        <p class="lead">Your friendly CISSP study companion! 🎓</p>
+        <p class="text-muted">Master the 8 domains with interactive quizzes, AI-powered insights, and comprehensive study materials.</p>
+    </div>
+    
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-10">
+            <div class="card border-info">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">🎆 Kerbie's Features</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>🎤 Voice Commands</h6>
+                            <p class="small text-muted">Click the microphone button and try:</p>
+                            <ul class="small">
+                                <li><strong>"Kerbie Domain 1"</strong> - Navigate to any domain</li>
+                                <li><strong>"Kerbie Quiz"</strong> - Start practice quiz</li>
+                                <li><strong>"Kerbie Acronym CIA"</strong> - Get voice definition</li>
+                                <li><strong>"Kerbie Home"</strong> - Return to home page</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>📚 Study Tools</h6>
+                            <ul class="small">
+                                <li><strong>Interactive Quizzes</strong> - Domain-specific or mixed</li>
+                                <li><strong>AI-Powered Questions</strong> - Generate new questions with AWS Nova</li>
+                                <li><strong>Acronym Dictionary</strong> - 90+ searchable CISSP terms</li>
+                                <li><strong>Reference Materials</strong> - OSI model, cryptography, malware, etc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <span class="badge bg-primary me-2">🎤 Voice Enabled</span>
+                        <span class="badge bg-success me-2">🤖 AI Powered</span>
+                        <span class="badge bg-info">📱 Mobile Friendly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">🎯 Start Practice Quiz</h5>
+                    <p class="card-text">Test your knowledge with randomized CISSP questions covering all 8 domains. Let Kerbie help you ace the exam!</p>
+                    <a href="/Quiz" class="btn btn-primary btn-lg">🚀 Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">📊 Domain 1</h6>
+                    <p class="card-text">Security and Risk Management</p>
+                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">💼 Domain 2</h6>
+                    <p class="card-text">Asset Security</p>
+                    <a href="/Domain2" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">🏢 Domain 3</h6>
+                    <p class="card-text">Security Architecture and Engineering</p>
+                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">🌐 Domain 4</h6>
+                    <p class="card-text">Communication and Network Security</p>
+                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">🔑 Domain 5</h6>
+                    <p class="card-text">Identity and Access Management</p>
+                    <a href="/Domain5" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">🔍 Domain 6</h6>
+                    <p class="card-text">Security Assessment and Testing</p>
+                    <a href="/Domain6" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">⚙️ Domain 7</h6>
+                    <p class="card-text">Security Operations</p>
+                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-title">💻 Domain 8</h6>
+                    <p class="card-text">Software Development Security</p>
+                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

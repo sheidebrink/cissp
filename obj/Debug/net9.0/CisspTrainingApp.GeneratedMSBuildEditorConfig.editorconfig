@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Domain1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9tYWluMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,8 +76,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Quiz.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVpei5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Shared/_CountdownBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Db3VudGRvd25CYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Shared/_MarketingLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9NYXJrZXRpbmdMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sheidebr/CisspTrainingApp/CisspTrainingApp/Pages/Shared/_ValidationScriptsPartial.cshtml]

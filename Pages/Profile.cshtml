@@ -1,0 +1,55 @@
+@page
+@model ProfileModel
+@{
+    ViewData["Title"] = "Profile - Kerbie";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <span class="kerbie-shield" style="position: relative; display: inline-block;">
+                            🛡️
+                            <span style="position: absolute; top: 3px; left: 35%; font-size: 0.4em; color: white;">•</span>
+                            <span style="position: absolute; top: 3px; right: 35%; font-size: 0.4em; color: white;">•</span>
+                            <span style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-size: 0.3em; color: white;">‿</span>
+                        </span>
+                        Your Profile
+                    </h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.StatusMessage))
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @Model.StatusMessage
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+                    
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Input.Email" class="form-label">Email</label>
+                            <input asp-for="Input.Email" class="form-control" readonly />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Input.ScheduledTestDate" class="form-label">
+                                📅 CISSP Exam Date & Time
+                                <small class="text-muted">(Optional)</small>
+                            </label>
+                            <input asp-for="Input.ScheduledTestDate" class="form-control" type="datetime-local" />
+                            <div class="form-text">Set your scheduled CISSP exam date to see a countdown timer.</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+                            <a href="/Dashboard" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

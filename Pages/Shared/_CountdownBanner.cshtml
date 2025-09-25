@@ -1,0 +1,89 @@
+@using Microsoft.AspNetCore.Identity
+@using CisspTrainingApp.Models
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ApplicationUser? user = null;
+    DateTime? testDate = null;
+    
+    try 
+    {
+        user = await UserManager.GetUserAsync(User);
+        testDate = user?.ScheduledTestDate;
+    }
+    catch
+    {
+        // Handle case where user session is stale
+        user = null;
+        testDate = null;
+    }
+}
+
+@if (testDate.HasValue && testDate.Value > DateTime.Now)
+{
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert" id="countdownBanner">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h5 class="alert-heading mb-1">
+                    ⏰ CISSP Exam Countdown
+                </h5>
+                <p class="mb-0">
+                    Your exam is scheduled for <strong>@testDate.Value.ToString("MMMM dd, yyyy 'at' h:mm tt")</strong>
+                </p>
+                <div id="countdown" class="mt-2">
+                    <span class="badge bg-danger me-2" id="days">0 Days</span>
+                    <span class="badge bg-warning me-2" id="hours">0 Hours</span>
+                    <span class="badge bg-info me-2" id="minutes">0 Minutes</span>
+                    <span class="badge bg-secondary" id="seconds">0 Seconds</span>
+                </div>
+            </div>
+            <div class="col-md-4 text-end">
+                <a href="/Profile" class="btn btn-outline-primary btn-sm">📅 Update Date</a>
+            </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    
+    <script>
+        // Countdown timer
+        const testDate = new Date('@testDate.Value.ToString("yyyy-MM-ddTHH:mm:ss")').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = testDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('countdownBanner').innerHTML = `
+                    <div class="text-center">
+                        <h4 class="text-success">🎉 Exam Day is Here! Good Luck! 🎉</h4>
+                    </div>
+                `;
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days + ' Days';
+            document.getElementById('hours').textContent = hours + ' Hours';
+            document.getElementById('minutes').textContent = minutes + ' Minutes';
+            document.getElementById('seconds').textContent = seconds + ' Seconds';
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+}
+else if (testDate.HasValue && testDate.Value <= DateTime.Now)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <div class="text-center">
+            <h4>🎉 Congratulations! Your CISSP exam date has passed! 🎉</h4>
+            <p class="mb-0">We hope your exam went well! <a href="/Profile" class="btn btn-outline-success btn-sm ms-2">Update Date</a></p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}

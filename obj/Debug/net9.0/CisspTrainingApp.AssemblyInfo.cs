@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22be82de9ed87f0bdba799a139d26d31ba86fdac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56a6723219f027fa37003c56a08701e84ea4d10b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CisspTrainingApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

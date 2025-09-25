@@ -1,146 +1,118 @@
-@page
+@page "/"
 @model IndexModel
+@using Microsoft.AspNetCore.Identity
+@using CisspTrainingApp.Models
+@inject SignInManager<ApplicationUser> SignInManager
 @{
-    ViewData["Title"] = "Kerbie - Your CISSP Study Companion";
+    if (SignInManager.IsSignedIn(User))
+    {
+        // Redirect authenticated users to Dashboard
+        Response.Redirect("/Dashboard");
+        return;
+    }
+    
+    ViewData["Title"] = "Kerbie - Your AI-Powered CISSP Study Companion";
+    Layout = "_MarketingLayout";
 }
 
-<div class="container mt-4">
-    <div class="text-center mb-4">
-        <h1 class="display-3">
-            <span class="kerbie-shield" style="position: relative; display: inline-block;">
-                🛡️
-                <span style="position: absolute; top: 15px; left: 35%; font-size: 0.4em; color: #333;">•</span>
-                <span style="position: absolute; top: 15px; right: 35%; font-size: 0.4em; color: #333;">•</span>
-                <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); font-size: 0.35em; color: #333;">‿</span>
-            </span> 
-            <strong>Kerbie</strong>
-        </h1>
-        <p class="lead">Your friendly CISSP study companion! 🎓</p>
-        <p class="text-muted">Master the 8 domains with interactive quizzes, AI-powered insights, and comprehensive study materials.</p>
-    </div>
-    
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-10">
-            <div class="card border-info">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0">🎆 Kerbie's Features</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>🎤 Voice Commands</h6>
-                            <p class="small text-muted">Click the microphone button and try:</p>
-                            <ul class="small">
-                                <li><strong>"Kerbie Domain 1"</strong> - Navigate to any domain</li>
-                                <li><strong>"Kerbie Quiz"</strong> - Start practice quiz</li>
-                                <li><strong>"Kerbie Acronym CIA"</strong> - Get voice definition</li>
-                                <li><strong>"Kerbie Home"</strong> - Return to home page</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h6>📚 Study Tools</h6>
-                            <ul class="small">
-                                <li><strong>Interactive Quizzes</strong> - Domain-specific or mixed</li>
-                                <li><strong>AI-Powered Questions</strong> - Generate new questions with AWS Nova</li>
-                                <li><strong>Acronym Dictionary</strong> - 90+ searchable CISSP terms</li>
-                                <li><strong>Reference Materials</strong> - OSI model, cryptography, malware, etc.</li>
-                            </ul>
-                        </div>
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-2 fw-bold mb-4">
+                        <span class="kerbie-shield" style="position: relative; display: inline-block;">
+                            🛡️
+                            <span style="position: absolute; top: 15px; left: 35%; font-size: 0.4em; color: #333;">•</span>
+                            <span style="position: absolute; top: 15px; right: 35%; font-size: 0.4em; color: #333;">•</span>
+                            <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); font-size: 0.35em; color: #333;">‿</span>
+                        </span>
+                        <span class="text-primary">Kerbie</span>
+                    </h1>
+                    <p class="lead mb-4">Your AI-powered CISSP study companion with voice navigation, interactive quizzes, and comprehensive study materials.</p>
+                    
+                    <div class="feature-badges mb-4">
+                        <span class="badge bg-primary me-2 p-2">🎤 Voice Enabled</span>
+                        <span class="badge bg-success me-2 p-2">🤖 AI Powered</span>
+                        <span class="badge bg-info p-2">📱 Mobile Friendly</span>
                     </div>
-                    <div class="text-center mt-3">
-                        <span class="badge bg-primary me-2">🎤 Voice Enabled</span>
-                        <span class="badge bg-success me-2">🤖 AI Powered</span>
-                        <span class="badge bg-info">📱 Mobile Friendly</span>
+                    
+                    <div class="cta-buttons">
+                        <a href="/Identity/Account/Register" class="btn btn-primary btn-lg me-3">🚀 Start Free Trial</a>
+                        <a href="/Identity/Account/Login" class="btn btn-outline-primary btn-lg">Sign In</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">🎯 Start Practice Quiz</h5>
-                    <p class="card-text">Test your knowledge with randomized CISSP questions covering all 8 domains. Let Kerbie help you ace the exam!</p>
-                    <a href="/Quiz" class="btn btn-primary btn-lg">🚀 Start Quiz</a>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <div class="feature-showcase p-4 bg-light rounded-3 shadow">
+                        <h4 class="text-primary mb-3">Try Voice Commands!</h4>
+                        <div class="voice-examples">
+                            <div class="voice-example mb-2">
+                                <span class="badge bg-secondary">🎤</span>
+                                <span class="ms-2">"Kerbie Domain 1"</span>
+                            </div>
+                            <div class="voice-example mb-2">
+                                <span class="badge bg-secondary">🎤</span>
+                                <span class="ms-2">"Kerbie Acronym CIA"</span>
+                            </div>
+                            <div class="voice-example">
+                                <span class="badge bg-secondary">🎤</span>
+                                <span class="ms-2">"Kerbie Quiz"</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="row mt-4">
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">📊 Domain 1</h6>
-                    <p class="card-text">Security and Risk Management</p>
-                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">Learn More</a>
+</div>
+
+<div class="features-section py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-4 fw-bold">Why Choose Kerbie?</h2>
+                <p class="lead">The most advanced CISSP study platform available</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4 h-100 bg-white rounded shadow">
+                    <div class="feature-icon mb-3">
+                        <span style="font-size: 3rem;">🎤</span>
+                    </div>
+                    <h4>Voice Navigation</h4>
+                    <p>Navigate hands-free with natural voice commands. Perfect for studying while commuting or exercising.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4 h-100 bg-white rounded shadow">
+                    <div class="feature-icon mb-3">
+                        <span style="font-size: 3rem;">🤖</span>
+                    </div>
+                    <h4>AI-Powered Questions</h4>
+                    <p>Generate unlimited practice questions using AWS Nova AI. Get fresh content tailored to your learning needs.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center p-4 h-100 bg-white rounded shadow">
+                    <div class="feature-icon mb-3">
+                        <span style="font-size: 3rem;">📚</span>
+                    </div>
+                    <h4>Comprehensive Content</h4>
+                    <p>Complete coverage of all 8 CISSP domains with reference materials, acronym dictionary, and study guides.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">💼 Domain 2</h6>
-                    <p class="card-text">Asset Security</p>
-                    <a href="/Domain2" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🏢 Domain 3</h6>
-                    <p class="card-text">Security Architecture and Engineering</p>
-                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🌐 Domain 4</h6>
-                    <p class="card-text">Communication and Network Security</p>
-                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🔑 Domain 5</h6>
-                    <p class="card-text">Identity and Access Management</p>
-                    <a href="/Domain5" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🔍 Domain 6</h6>
-                    <p class="card-text">Security Assessment and Testing</p>
-                    <a href="/Domain6" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">⚙️ Domain 7</h6>
-                    <p class="card-text">Security Operations</p>
-                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">💻 Domain 8</h6>
-                    <p class="card-text">Software Development Security</p>
-                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
+
+<div class="cta-section py-5 bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">Ready to Ace Your CISSP Exam?</h2>
+        <p class="lead mb-4">Join thousands of security professionals who trust Kerbie for their certification journey.</p>
+        <a href="/Identity/Account/Register" class="btn btn-light btn-lg">Get Started Today - It's Free!</a>
     </div>
 </div>
