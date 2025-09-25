@@ -143,4 +143,251 @@
             </div>
         </div>
     </div>
+    
+    <!-- Recent Security Breaches -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-10">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">🚨 Why Security Matters - Recent Breaches</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">Real-world security incidents remind us why CISSP skills are critical:</p>
+                    <div id="breachContent" class="row">
+                        <!-- Dynamic content loaded here -->
+                    </div>
+                    
+                    <div class="mt-3">
+                        <div class="alert alert-warning">
+                            <strong>📊 Key Statistics:</strong>
+                            <ul class="small mb-0">
+                                <li>Average data breach cost: <strong>$4.45M</strong> (IBM 2023)</li>
+                                <li>Time to identify breach: <strong>207 days</strong> average</li>
+                                <li>Time to contain breach: <strong>70 days</strong> average</li>
+                                <li>Organizations with security AI: <strong>$1.76M less</strong> breach cost</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="small text-muted mb-2">Your CISSP certification helps prevent these incidents!</p>
+                        <button id="refreshBreaches" class="btn btn-outline-danger btn-sm me-2">🔄 Show Different Breaches</button>
+                        <span class="badge bg-danger me-2">🔒 Risk Management</span>
+                        <span class="badge bg-warning me-2">🚫 Threat Prevention</span>
+                        <span class="badge bg-info">🛡️ Incident Response</span>
+                    </div>
+                    
+                    <script>
+                    // Security Breach Database
+                    const securityBreaches = [
+                        { name: "MOVEit Transfer (2023)", impact: "2,100+ organizations, 62M+ individuals", cause: "SQL injection vulnerability", relevance: "Secure coding, vulnerability management", severity: "danger" },
+                        { name: "LastPass (2022)", impact: "30M+ user vaults compromised", cause: "DevOps engineer's compromised endpoint", relevance: "Endpoint security, privileged access", severity: "warning" },
+                        { name: "Toyota (2023)", impact: "2.15M customers exposed for 10 years", cause: "Misconfigured cloud database", relevance: "Cloud security, data classification", severity: "danger" },
+                        { name: "Uber (2022)", impact: "Complete network compromise", cause: "Social engineering + MFA fatigue", relevance: "Security awareness, MFA design", severity: "warning" },
+                        { name: "Medibank (2022)", impact: "9.7M customers' health data", cause: "Credential compromise, lateral movement", relevance: "Network segmentation, monitoring", severity: "info" },
+                        { name: "Revolut (2022)", impact: "50,000+ customers' data accessed", cause: "Highly targeted social engineering", relevance: "Human factors, incident response", severity: "info" },
+                        { name: "Equifax (2017)", impact: "147M+ personal records exposed", cause: "Unpatched Apache Struts vulnerability", relevance: "Patch management, vulnerability assessment", severity: "danger" },
+                        { name: "SolarWinds (2020)", impact: "18,000+ organizations compromised", cause: "Supply chain attack via software update", relevance: "Supply chain security, code integrity", severity: "danger" },
+                        { name: "Capital One (2019)", impact: "100M+ credit applications exposed", cause: "Misconfigured web application firewall", relevance: "Cloud security, access controls", severity: "warning" },
+                        { name: "Marriott (2018)", impact: "500M+ guest records stolen", cause: "Advanced persistent threat (APT)", relevance: "Threat detection, incident response", severity: "danger" },
+                        { name: "Target (2013)", impact: "40M+ credit/debit cards compromised", cause: "HVAC vendor credential compromise", relevance: "Third-party risk, network segmentation", severity: "warning" },
+                        { name: "Yahoo (2013-2014)", impact: "3B+ user accounts compromised", cause: "State-sponsored attacks, weak encryption", relevance: "Cryptography, threat intelligence", severity: "danger" },
+                        { name: "Anthem (2015)", impact: "78.8M+ healthcare records stolen", cause: "Spear phishing, lateral movement", relevance: "Email security, network monitoring", severity: "warning" },
+                        { name: "Home Depot (2014)", impact: "56M+ payment cards compromised", cause: "Malware on POS systems", relevance: "Endpoint protection, payment security", severity: "info" },
+                        { name: "Microsoft Exchange (2021)", impact: "250,000+ servers compromised globally", cause: "Zero-day vulnerabilities (Hafnium)", relevance: "Patch management, threat hunting", severity: "danger" },
+                        { name: "Colonial Pipeline (2021)", impact: "US fuel supply disrupted for days", cause: "Ransomware via compromised VPN", relevance: "Business continuity, remote access security", severity: "warning" }
+                    ];
+                    
+                    function getRandomBreaches(count = 6) {
+                        const shuffled = [...securityBreaches].sort(() => 0.5 - Math.random());
+                        return shuffled.slice(0, count);
+                    }
+                    
+                    function renderBreaches() {
+                        const breaches = getRandomBreaches(6);
+                        const leftColumn = breaches.slice(0, 3);
+                        const rightColumn = breaches.slice(3, 6);
+                        
+                        const renderColumn = (columnBreaches) => {
+                            return columnBreaches.map(breach => `
+                                <div class="breach-item mb-3 p-3 border-start border-${breach.severity} border-3">
+                                    <h6 class="text-${breach.severity}">${breach.name}</h6>
+                                    <p class="small mb-1"><strong>Impact:</strong> ${breach.impact}</p>
+                                    <p class="small mb-1"><strong>Cause:</strong> ${breach.cause}</p>
+                                    <p class="small text-muted"><strong>CISSP Relevance:</strong> ${breach.relevance}</p>
+                                </div>
+                            `).join('');
+                        };
+                        
+                        document.getElementById('breachContent').innerHTML = `
+                            <div class="col-md-6">
+                                ${renderColumn(leftColumn)}
+                            </div>
+                            <div class="col-md-6">
+                                ${renderColumn(rightColumn)}
+                            </div>
+                        `;
+                    }
+                    
+                    // Initial load
+                    renderBreaches();
+                    
+                    // Refresh button
+                    document.getElementById('refreshBreaches').addEventListener('click', renderBreaches);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Celebration Section -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 text-center">
+            <div class="card border-warning">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">🎆 Ready to Celebrate?</h5>
+                    <p class="card-text">Passed your CISSP exam? Let's celebrate your achievement!</p>
+                    <button id="celebrateBtn" class="btn btn-warning btn-lg">
+                        🎉 I PASSED! 🎉
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Confetti Canvas -->
+<canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none;"></canvas>
+
+<script>
+// Confetti Animation
+class ConfettiPiece {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.x = Math.random() * canvas.width;
+        this.y = -10;
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = Math.random() * 3 + 2;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 10;
+        this.size = Math.random() * 8 + 4;
+        this.colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
+        this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    }
+    
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotationSpeed;
+        this.vy += 0.1; // gravity
+    }
+    
+    draw() {
+        this.ctx.save();
+        this.ctx.translate(this.x, this.y);
+        this.ctx.rotate(this.rotation * Math.PI / 180);
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        this.ctx.restore();
+    }
+    
+    isOffScreen() {
+        return this.y > this.canvas.height + 10;
+    }
+}
+
+class ConfettiAnimation {
+    constructor() {
+        this.canvas = document.getElementById('confettiCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.confetti = [];
+        this.animationId = null;
+        this.isRunning = false;
+        
+        this.resizeCanvas();
+        window.addEventListener('resize', () => this.resizeCanvas());
+    }
+    
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+    
+    start() {
+        if (this.isRunning) return;
+        
+        this.isRunning = true;
+        this.canvas.style.display = 'block';
+        
+        // Create initial burst of confetti
+        for (let i = 0; i < 100; i++) {
+            this.confetti.push(new ConfettiPiece(this.canvas));
+        }
+        
+        this.animate();
+        
+        // Stop after 5 seconds
+        setTimeout(() => this.stop(), 5000);
+    }
+    
+    animate() {
+        if (!this.isRunning) return;
+        
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Update and draw confetti
+        for (let i = this.confetti.length - 1; i >= 0; i--) {
+            const piece = this.confetti[i];
+            piece.update();
+            piece.draw();
+            
+            if (piece.isOffScreen()) {
+                this.confetti.splice(i, 1);
+            }
+        }
+        
+        // Add new confetti pieces occasionally
+        if (Math.random() < 0.1 && this.confetti.length < 150) {
+            this.confetti.push(new ConfettiPiece(this.canvas));
+        }
+        
+        this.animationId = requestAnimationFrame(() => this.animate());
+    }
+    
+    stop() {
+        this.isRunning = false;
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+        
+        // Fade out
+        setTimeout(() => {
+            this.canvas.style.display = 'none';
+            this.confetti = [];
+        }, 2000);
+    }
+}
+
+// Initialize confetti animation
+const confettiAnimation = new ConfettiAnimation();
+
+// Celebration button event
+document.getElementById('celebrateBtn').addEventListener('click', function() {
+    // Start confetti animation
+    confettiAnimation.start();
+    
+    // Show celebration message
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '🎆 CONGRATULATIONS! 🎆';
+    btn.classList.remove('btn-warning');
+    btn.classList.add('btn-success');
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-warning');
+    }, 3000);
+});
+</script>
