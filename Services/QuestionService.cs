@@ -62,5 +62,26 @@ namespace CisspTrainingApp.Services
         {
             return _questions.FirstOrDefault(q => q.Id == id);
         }
+
+        public List<Question> GetAllQuestions()
+        {
+            return _questions;
+        }
+
+        public void AddQuestion(Question question)
+        {
+            question.Id = _questions.Count > 0 ? _questions.Max(q => q.Id) + 1 : 1;
+            question.Options = question.Options ?? new List<string>();
+            _questions.Add(question);
+        }
+
+        public void DeleteQuestion(int id)
+        {
+            var question = _questions.FirstOrDefault(q => q.Id == id);
+            if (question != null)
+            {
+                _questions.Remove(question);
+            }
+        }
     }
 }
