@@ -69,6 +69,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Add Question</button>
+                <button type="button" class="btn btn-outline-info ms-2" id="generate-question">Generate with AWS Nova</button>
             </form>
         </div>
     </div>
@@ -106,3 +107,43 @@
         <a href="/" class="btn btn-secondary">Back to Home</a>
     </div>
 </div>
+
+<script>
+document.getElementById('generate-question').addEventListener('click', async function() {
+    const button = this;
+    const originalText = button.textContent;
+    button.textContent = 'Generating...';
+    button.disabled = true;
+    
+    try {
+        const formData = new FormData();
+        formData.append('__RequestVerificationToken', document.querySelector('input[name="__RequestVerificationToken"]').value);
+        
+        const response = await fetch('/Admin?handler=GenerateQuestion', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const question = await response.json();
+            
+            document.querySelector('textarea[name="NewQuestion.Text"]').value = question.text;
+            document.querySelector('select[name="NewQuestion.Domain"]').value = question.domain;
+            document.querySelector('input[name="NewQuestion.Options[0]"]').value = question.options[0];
+            document.querySelector('input[name="NewQuestion.Options[1]"]').value = question.options[1];
+            document.querySelector('input[name="NewQuestion.Options[2]"]').value = question.options[2];
+            document.querySelector('input[name="NewQuestion.Options[3]"]').value = question.options[3];
+            document.querySelector('select[name="NewQuestion.CorrectAnswerIndex"]').value = question.correctAnswerIndex;
+            document.querySelector('textarea[name="NewQuestion.Explanation"]').value = question.explanation;
+        } else {
+            const errorText = await response.text();
+            alert('Failed to generate question: ' + errorText);
+        }
+    } catch (error) {
+        alert('Error generating question: ' + error.message);
+    } finally {
+        button.textContent = originalText;
+        button.disabled = false;
+    }
+});
+</script>

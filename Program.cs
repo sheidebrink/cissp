@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
 builder.Services.AddSingleton<QuestionService>();
+builder.Services.AddSingleton<NovaService>();
 
 var app = builder.Build();
 

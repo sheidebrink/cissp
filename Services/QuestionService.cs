@@ -83,5 +83,20 @@ namespace CisspTrainingApp.Services
                 _questions.Remove(question);
             }
         }
+
+        public async Task<object> GenerateQuestionWithNova()
+        {
+            var novaService = new NovaService();
+            var question = await novaService.GenerateQuestion();
+            
+            return new
+            {
+                text = question.Text,
+                domain = question.Domain,
+                options = question.Options,
+                correctAnswerIndex = question.CorrectAnswerIndex,
+                explanation = question.Explanation
+            };
+        }
     }
 }

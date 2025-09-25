@@ -40,5 +40,18 @@ namespace CisspTrainingApp.Pages
             _questionService.DeleteQuestion(id);
             return RedirectToPage();
         }
+
+        public async Task<IActionResult> OnPostGenerateQuestion()
+        {
+            try
+            {
+                var question = await _questionService.GenerateQuestionWithNova();
+                return new JsonResult(question);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+        }
     }
 }

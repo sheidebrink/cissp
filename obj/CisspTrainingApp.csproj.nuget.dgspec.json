@@ -50,6 +50,12 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "AWSSDK.BedrockRuntime": {
+              "target": "Package",
+              "version": "[3.7.400.45, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

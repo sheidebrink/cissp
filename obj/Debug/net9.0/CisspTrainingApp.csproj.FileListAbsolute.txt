@@ -95,3 +95,7 @@ C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTraini
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.genruntimeconfig.cache
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\ref\CisspTrainingApp.dll
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.sourcelink.json
+C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\bin\Debug\net9.0\AWSSDK.BedrockRuntime.dll
+C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\bin\Debug\net9.0\AWSSDK.Core.dll
+C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.csproj.AssemblyReference.cache
+C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTra.60C563EB.Up2Date
