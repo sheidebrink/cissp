@@ -1,8 +1,8 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CisspTrainingApp.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace CisspTrainingApp.Pages
 {
@@ -18,15 +18,14 @@ namespace CisspTrainingApp.Pages
         [BindProperty]
         public InputModel Input { get; set; } = new();
 
-        [TempData]
-        public string StatusMessage { get; set; } = string.Empty;
-
         public class InputModel
         {
             [EmailAddress]
+            [Display(Name = "Email")]
             public string Email { get; set; } = string.Empty;
 
-            [Display(Name = "Scheduled Test Date")]
+            [Display(Name = "CISSP Exam Date & Time")]
+            [DataType(DataType.DateTime)]
             public DateTime? ScheduledTestDate { get; set; }
         }
 
@@ -35,8 +34,7 @@ namespace CisspTrainingApp.Pages
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                // User session is stale, redirect to login
-                return RedirectToPage("/Identity/Account/Login");
+                return Challenge();
             }
 
             Input.Email = user.Email ?? string.Empty;
@@ -50,27 +48,29 @@ namespace CisspTrainingApp.Pages
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                // User session is stale, redirect to login
-                return RedirectToPage("/Identity/Account/Login");
+                return Challenge();
             }
 
             if (!ModelState.IsValid)
             {
-                Input.Email = user.Email ?? string.Empty;
                 return Page();
             }
 
             user.ScheduledTestDate = Input.ScheduledTestDate;
             var result = await _userManager.UpdateAsync(user);
 
-            if (!result.Succeeded)
+            if (result.Succeeded)
             {
-                StatusMessage = "Unexpected error when trying to update profile.";
+                TempData["StatusMessage"] = "Your profile has been updated";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your profile has been updated successfully!";
-            return RedirectToPage();
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return Page();
         }
     }
 }
