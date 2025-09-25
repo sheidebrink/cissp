@@ -23,6 +23,157 @@
                 </div>
             </div>
             
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>CIA Triad - Foundation of Information Security</h5>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">🔒 Confidentiality</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Definition:</strong> Ensuring information is accessible only to authorized individuals</p>
+                                    <p><strong>Controls:</strong></p>
+                                    <ul>
+                                        <li>Encryption (at rest & in transit)</li>
+                                        <li>Access controls (RBAC, MAC, DAC)</li>
+                                        <li>Authentication & authorization</li>
+                                        <li>Data classification</li>
+                                        <li>NDAs and legal agreements</li>
+                                    </ul>
+                                    <p><strong>Threats:</strong></p>
+                                    <ul>
+                                        <li>Data breaches</li>
+                                        <li>Unauthorized access</li>
+                                        <li>Social engineering</li>
+                                        <li>Insider threats</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">✅ Integrity</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Definition:</strong> Ensuring information remains accurate, complete, and unaltered</p>
+                                    <p><strong>Controls:</strong></p>
+                                    <ul>
+                                        <li>Digital signatures</li>
+                                        <li>Hash functions (MD5, SHA)</li>
+                                        <li>Checksums and CRCs</li>
+                                        <li>Version control systems</li>
+                                        <li>Input validation</li>
+                                        <li>Change management</li>
+                                    </ul>
+                                    <p><strong>Threats:</strong></p>
+                                    <ul>
+                                        <li>Data tampering</li>
+                                        <li>Malware corruption</li>
+                                        <li>Human error</li>
+                                        <li>System failures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <h6 class="mb-0">⚡ Availability</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Definition:</strong> Ensuring information and systems are accessible when needed</p>
+                                    <p><strong>Controls:</strong></p>
+                                    <ul>
+                                        <li>Redundancy and failover</li>
+                                        <li>Load balancing</li>
+                                        <li>Backup and recovery</li>
+                                        <li>Disaster recovery planning</li>
+                                        <li>Maintenance schedules</li>
+                                        <li>Capacity planning</li>
+                                    </ul>
+                                    <p><strong>Threats:</strong></p>
+                                    <ul>
+                                        <li>DDoS attacks</li>
+                                        <li>Hardware failures</li>
+                                        <li>Natural disasters</li>
+                                        <li>Power outages</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>CIA Triad Implementation Examples</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Confidentiality</th>
+                                    <th>Integrity</th>
+                                    <th>Availability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Banking System</strong></td>
+                                    <td>Encrypt customer data, secure login</td>
+                                    <td>Transaction validation, audit trails</td>
+                                    <td>24/7 uptime, redundant systems</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Medical Records</strong></td>
+                                    <td>HIPAA compliance, access controls</td>
+                                    <td>Digital signatures, version control</td>
+                                    <td>Emergency access, backup systems</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>E-commerce Site</strong></td>
+                                    <td>SSL/TLS, PCI DSS compliance</td>
+                                    <td>Order verification, payment validation</td>
+                                    <td>Load balancing, CDN, DDoS protection</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Government Data</strong></td>
+                                    <td>Classification levels, clearances</td>
+                                    <td>Chain of custody, tamper evidence</td>
+                                    <td>Continuity of operations planning</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Key Principles</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Balance:</strong> All three elements must be considered together</li>
+                                    <li><strong>Context:</strong> Importance varies by organization and data type</li>
+                                    <li><strong>Trade-offs:</strong> Enhancing one may impact others</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Risk-based:</strong> Apply controls based on risk assessment</li>
+                                    <li><strong>Layered:</strong> Use defense in depth approach</li>
+                                    <li><strong>Measurable:</strong> Define metrics for each component</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security and Risk Management" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>

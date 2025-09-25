@@ -121,6 +121,342 @@
                 </div>
             </div>
             
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Backup Types and Strategies</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Backup Type</th>
+                                    <th>Description</th>
+                                    <th>Speed</th>
+                                    <th>Storage Space</th>
+                                    <th>Recovery Time</th>
+                                    <th>Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Full Backup</strong></td>
+                                    <td>Complete copy of all selected data</td>
+                                    <td>🔴 Slowest</td>
+                                    <td>🔴 Most space</td>
+                                    <td>🟢 Fastest restore</td>
+                                    <td>Weekly/monthly baseline</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Incremental</strong></td>
+                                    <td>Only data changed since last backup</td>
+                                    <td>🟢 Fastest</td>
+                                    <td>🟢 Least space</td>
+                                    <td>🔴 Slowest restore</td>
+                                    <td>Daily backups</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Differential</strong></td>
+                                    <td>Data changed since last full backup</td>
+                                    <td>🟡 Medium</td>
+                                    <td>🟡 Medium space</td>
+                                    <td>🟡 Medium restore</td>
+                                    <td>Balance of speed/space</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mirror/Clone</strong></td>
+                                    <td>Exact real-time copy</td>
+                                    <td>🟢 Real-time</td>
+                                    <td>🔴 Full space</td>
+                                    <td>🟢 Instant</td>
+                                    <td>High availability systems</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Snapshot</strong></td>
+                                    <td>Point-in-time copy</td>
+                                    <td>🟢 Very fast</td>
+                                    <td>🟢 Minimal initial</td>
+                                    <td>🟢 Fast restore</td>
+                                    <td>Virtual environments</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h6>Backup Strategies</h6>
+                            <div class="card border-info">
+                                <div class="card-body">
+                                    <h6>3-2-1 Rule</h6>
+                                    <ul>
+                                        <li><strong>3</strong> copies of important data</li>
+                                        <li><strong>2</strong> different storage media types</li>
+                                        <li><strong>1</strong> copy stored offsite</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="card border-success mt-3">
+                                <div class="card-body">
+                                    <h6>Grandfather-Father-Son (GFS)</h6>
+                                    <ul>
+                                        <li><strong>Son:</strong> Daily backups (7 days)</li>
+                                        <li><strong>Father:</strong> Weekly backups (4 weeks)</li>
+                                        <li><strong>Grandfather:</strong> Monthly backups (12 months)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Storage Locations</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Location</th>
+                                            <th>Pros</th>
+                                            <th>Cons</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Local</strong></td>
+                                            <td>Fast access, full control</td>
+                                            <td>Disaster risk, limited capacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Offsite</strong></td>
+                                            <td>Disaster protection</td>
+                                            <td>Slower access, transport costs</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cloud</strong></td>
+                                            <td>Scalable, automated</td>
+                                            <td>Internet dependency, ongoing costs</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Hybrid</strong></td>
+                                            <td>Best of all worlds</td>
+                                            <td>Complex management</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <h6>Key Metrics</h6>
+                            <ul>
+                                <li><strong>RTO:</strong> Recovery Time Objective</li>
+                                <li><strong>RPO:</strong> Recovery Point Objective</li>
+                                <li><strong>MTTR:</strong> Mean Time To Recovery</li>
+                                <li><strong>MTBF:</strong> Mean Time Between Failures</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Backup Testing and Validation</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Regular restore tests:</strong> Verify backup integrity</li>
+                                    <li><strong>Automated verification:</strong> Check backup completion</li>
+                                    <li><strong>Documentation:</strong> Maintain recovery procedures</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><strong>Retention policies:</strong> Legal and business requirements</li>
+                                    <li><strong>Encryption:</strong> Protect backup data</li>
+                                    <li><strong>Monitoring:</strong> Alert on backup failures</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Malware Types and Characteristics</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Malware Type</th>
+                                    <th>Description</th>
+                                    <th>Propagation</th>
+                                    <th>Primary Goal</th>
+                                    <th>Detection Difficulty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Virus</strong></td>
+                                    <td>Attaches to executable files</td>
+                                    <td>Requires host file execution</td>
+                                    <td>Replication, damage</td>
+                                    <td>🟡 Medium</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Worm</strong></td>
+                                    <td>Self-replicating network malware</td>
+                                    <td>Network vulnerabilities</td>
+                                    <td>Spread, consume resources</td>
+                                    <td>🟢 Easy</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Trojan Horse</strong></td>
+                                    <td>Disguised as legitimate software</td>
+                                    <td>User installation</td>
+                                    <td>Backdoor access, data theft</td>
+                                    <td>🔴 Hard</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rootkit</strong></td>
+                                    <td>Hides presence in system</td>
+                                    <td>Privilege escalation</td>
+                                    <td>Persistent access, stealth</td>
+                                    <td>🔴 Very Hard</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ransomware</strong></td>
+                                    <td>Encrypts files for payment</td>
+                                    <td>Email, web, removable media</td>
+                                    <td>Financial extortion</td>
+                                    <td>🟡 Medium</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Spyware</strong></td>
+                                    <td>Monitors user activity</td>
+                                    <td>Bundled software, drive-by</td>
+                                    <td>Data collection, surveillance</td>
+                                    <td>🔴 Hard</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adware</strong></td>
+                                    <td>Displays unwanted advertisements</td>
+                                    <td>Software bundles</td>
+                                    <td>Revenue generation</td>
+                                    <td>🟢 Easy</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Keylogger</strong></td>
+                                    <td>Records keystrokes</td>
+                                    <td>Email, malicious websites</td>
+                                    <td>Credential theft</td>
+                                    <td>🔴 Hard</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Botnet</strong></td>
+                                    <td>Network of infected computers</td>
+                                    <td>Multiple vectors</td>
+                                    <td>Distributed attacks, spam</td>
+                                    <td>🟡 Medium</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h6>Advanced Persistent Threats (APT)</h6>
+                            <div class="card border-danger">
+                                <div class="card-body">
+                                    <p><strong>Characteristics:</strong></p>
+                                    <ul>
+                                        <li>Long-term presence</li>
+                                        <li>Sophisticated techniques</li>
+                                        <li>Targeted attacks</li>
+                                        <li>State-sponsored or organized crime</li>
+                                        <li>Multiple attack vectors</li>
+                                    </ul>
+                                    <p><strong>Phases:</strong></p>
+                                    <ol>
+                                        <li>Initial compromise</li>
+                                        <li>Establish foothold</li>
+                                        <li>Escalate privileges</li>
+                                        <li>Internal reconnaissance</li>
+                                        <li>Lateral movement</li>
+                                        <li>Data exfiltration</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Polymorphic and Metamorphic Malware</h6>
+                            <div class="card border-warning">
+                                <div class="card-body">
+                                    <p><strong>Polymorphic:</strong></p>
+                                    <ul>
+                                        <li>Changes signature while keeping core functionality</li>
+                                        <li>Uses encryption and obfuscation</li>
+                                        <li>Evades signature-based detection</li>
+                                    </ul>
+                                    <p><strong>Metamorphic:</strong></p>
+                                    <ul>
+                                        <li>Completely rewrites itself</li>
+                                        <li>No constant signature</li>
+                                        <li>More advanced than polymorphic</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h6>Zero-Day Exploits</h6>
+                            <div class="card border-info">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Exploits unknown vulnerabilities</li>
+                                        <li>No existing patches or signatures</li>
+                                        <li>High value on black market</li>
+                                        <li>Requires behavioral detection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Malware Defense Strategies</h6>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6>Prevention</h6>
+                                <ul>
+                                    <li>Antivirus/anti-malware software</li>
+                                    <li>Email filtering and scanning</li>
+                                    <li>Web content filtering</li>
+                                    <li>Application whitelisting</li>
+                                    <li>Patch management</li>
+                                    <li>User education and training</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Detection</h6>
+                                <ul>
+                                    <li>Signature-based detection</li>
+                                    <li>Heuristic analysis</li>
+                                    <li>Behavioral monitoring</li>
+                                    <li>Sandboxing</li>
+                                    <li>Network traffic analysis</li>
+                                    <li>File integrity monitoring</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Response</h6>
+                                <ul>
+                                    <li>Incident response procedures</li>
+                                    <li>System isolation and quarantine</li>
+                                    <li>Malware removal and cleanup</li>
+                                    <li>System restoration from backups</li>
+                                    <li>Forensic analysis</li>
+                                    <li>Lessons learned and improvements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security Operations" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
