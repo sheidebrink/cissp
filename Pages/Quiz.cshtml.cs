@@ -20,10 +20,15 @@ namespace CisspTrainingApp.Pages
         public bool ShowAnswer { get; set; } = false;
         public bool LastAnswerCorrect { get; set; } = false;
 
-        public void OnGet()
+        public void OnGet(string? domain = null)
         {
-            Questions = _questionService.GetRandomQuestions(3);
+            Questions = _questionService.GetRandomQuestions(3, domain);
             HttpContext.Session.SetString("Questions", System.Text.Json.JsonSerializer.Serialize(Questions));
+            
+            if (!string.IsNullOrEmpty(domain))
+            {
+                ViewData["Title"] = $"CISSP Quiz - {domain}";
+            }
         }
 
         public IActionResult OnPost(int currentQuestionIndex, int selectedAnswer)

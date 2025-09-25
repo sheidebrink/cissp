@@ -53,9 +53,13 @@ namespace CisspTrainingApp.Services
             }
         };
 
-        public List<Question> GetRandomQuestions(int count = 10)
+        public List<Question> GetRandomQuestions(int count = 10, string? domain = null)
         {
-            return _questions.OrderBy(x => Guid.NewGuid()).Take(count).ToList();
+            var filteredQuestions = string.IsNullOrEmpty(domain) 
+                ? _questions 
+                : _questions.Where(q => q.Domain == domain).ToList();
+            
+            return filteredQuestions.OrderBy(x => Guid.NewGuid()).Take(count).ToList();
         }
 
         public Question? GetQuestionById(int id)
