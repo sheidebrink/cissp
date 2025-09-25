@@ -3,17 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CisspTrainingApp</title>
+    <title>@ViewData["Title"] - Kerbie</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CisspTrainingApp.styles.css" asp-append-version="true" />
+    <style>
+        .kerbie-shield {
+            transition: transform 0.3s ease;
+        }
+        .kerbie-shield:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CisspTrainingApp</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <span class="kerbie-shield" style="font-size: 1.5em; position: relative; display: inline-block;">
+                        🛡️
+                        <span style="position: absolute; top: 3px; left: 40%; font-size: 0.3em; color: #333;">•</span>
+                        <span style="position: absolute; top: 3px; right: 40%; font-size: 0.3em; color: #333;">•</span>
+                        <span style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-size: 0.25em; color: #333;">‿</span>
+                    </span> 
+                    <strong>Kerbie</strong>
+                    <small class="text-muted">CISSP Training</small>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,11 +53,17 @@
                     <button class="btn btn-outline-secondary" id="theme-toggle" type="button">
                         🌙
                     </button>
+                    <button class="btn btn-outline-info ms-2" id="voice-toggle" type="button" title="Voice Navigation">
+                        🎤
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
+        <div id="voice-status" class="alert alert-info" style="display: none; position: fixed; top: 80px; right: 20px; z-index: 1050; width: 300px;">
+            🎤 Voice navigation active. Say "Kerbie Domain 1" to navigate.
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -48,7 +71,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - CisspTrainingApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2025 - Kerbie CISSP Training - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
@@ -56,6 +79,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
+        console.log('Script loading...');
+        
         document.getElementById('theme-toggle').addEventListener('click', function() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-bs-theme');
@@ -69,6 +94,129 @@
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
         document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '🌙' : '☀️';
+        
+    </script>
+    
+    <script>
+        console.log('Voice script starting...');
+        
+        // Voice Recognition - Initialize immediately or after DOM is loaded
+        function initVoiceRecognition() {
+            console.log('Initializing voice recognition...');
+            let recognition = null;
+            let isListening = false;
+            const voiceToggle = document.getElementById('voice-toggle');
+            
+            if (!voiceToggle) {
+                console.log('Voice toggle button not found');
+                return;
+            }
+        
+            console.log('Checking speech recognition support...');
+            console.log('webkitSpeechRecognition available:', 'webkitSpeechRecognition' in window);
+            console.log('SpeechRecognition available:', 'SpeechRecognition' in window);
+            
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                console.log('Speech recognition supported');
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+                
+                recognition.onresult = function(event) {
+                    const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase().trim();
+                    console.log('Voice command:', transcript);
+                    
+                    if (transcript.includes('kerbie') || transcript.includes('kirby') || transcript.includes('curby')) {
+                        console.log('Kerbie command detected:', transcript);
+                        
+                        // Extract domain number (digits or words)
+                        const numberWords = {
+                            'one': '1', 'two': '2', 'three': '3', 'four': '4',
+                            'five': '5', 'six': '6', 'seven': '7', 'eight': '8'
+                        };
+                        
+                        let domainNum = null;
+                        
+                        // Check for digit pattern
+                        const digitMatch = transcript.match(/domain\s*(\d+)/);
+                        if (digitMatch) {
+                            domainNum = digitMatch[1];
+                        } else {
+                            // Check for word pattern
+                            const wordMatch = transcript.match(/domain\s*(\w+)/);
+                            if (wordMatch && numberWords[wordMatch[1]]) {
+                                domainNum = numberWords[wordMatch[1]];
+                            }
+                        }
+                        
+                        if (domainNum && domainNum >= 1 && domainNum <= 8) {
+                            console.log('Navigating to Domain', domainNum);
+                            window.location.href = `/Domain${domainNum}`;
+                            return;
+                        }
+                        
+                        // Other Kerbie commands
+                        if (transcript.includes('quiz')) {
+                            console.log('Navigating to Quiz');
+                            window.location.href = '/Quiz';
+                        } else if (transcript.includes('acronym')) {
+                            console.log('Navigating to Acronyms');
+                            window.location.href = '/Acronyms';
+                        } else if (transcript.includes('admin')) {
+                            console.log('Navigating to Admin');
+                            window.location.href = '/Admin';
+                        } else if (transcript.includes('home')) {
+                            console.log('Navigating to Home');
+                            window.location.href = '/';
+                        }
+                    }
+                };
+                
+                recognition.onerror = function(event) {
+                    console.error('Speech recognition error:', event.error);
+                };
+                
+                voiceToggle.addEventListener('click', function() {
+                    console.log('Voice toggle clicked, isListening:', isListening);
+                    const voiceStatus = document.getElementById('voice-status');
+                    if (isListening) {
+                        console.log('Stopping recognition');
+                        recognition.stop();
+                        isListening = false;
+                        voiceToggle.textContent = '🎤';
+                        voiceToggle.classList.remove('btn-success');
+                        voiceToggle.classList.add('btn-outline-info');
+                        voiceStatus.style.display = 'none';
+                    } else {
+                        console.log('Starting recognition');
+                        try {
+                            recognition.start();
+                            isListening = true;
+                            voiceToggle.textContent = '🔴';
+                            voiceToggle.classList.remove('btn-outline-info');
+                            voiceToggle.classList.add('btn-success');
+                            voiceStatus.style.display = 'block';
+                            setTimeout(() => voiceStatus.style.display = 'none', 3000);
+                        } catch (error) {
+                            console.error('Error starting recognition:', error);
+                            alert('Error starting voice recognition: ' + error.message);
+                        }
+                    }
+                });
+            } else {
+                console.log('Speech recognition not supported in this browser');
+                voiceToggle.style.display = 'none';
+            }
+        }
+        
+        // Initialize voice recognition when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVoiceRecognition);
+        } else {
+            initVoiceRecognition();
+        }
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)

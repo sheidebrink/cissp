@@ -1,22 +1,31 @@
 @page
 @model IndexModel
 @{
-    ViewData["Title"] = "CISSP Training";
+    ViewData["Title"] = "Kerbie - Your CISSP Study Companion";
 }
 
 <div class="container mt-4">
     <div class="text-center mb-4">
-        <h1 class="display-4">CISSP Exam Training</h1>
-        <p class="lead">Practice questions for the Certified Information Systems Security Professional exam</p>
+        <h1 class="display-3">
+            <span class="kerbie-shield" style="position: relative; display: inline-block;">
+                🛡️
+                <span style="position: absolute; top: 15px; left: 35%; font-size: 0.4em; color: #333;">•</span>
+                <span style="position: absolute; top: 15px; right: 35%; font-size: 0.4em; color: #333;">•</span>
+                <span style="position: absolute; top: 25px; left: 50%; transform: translateX(-50%); font-size: 0.35em; color: #333;">‿</span>
+            </span> 
+            <strong>Kerbie</strong>
+        </h1>
+        <p class="lead">Your friendly CISSP study companion! 🎓</p>
+        <p class="text-muted">Master the 8 domains with interactive quizzes, AI-powered insights, and comprehensive study materials.</p>
     </div>
     
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Start Practice Quiz</h5>
-                    <p class="card-text">Test your knowledge with randomized CISSP questions covering all 8 domains.</p>
-                    <a href="/Quiz" class="btn btn-primary btn-lg">Start Quiz</a>
+                    <h5 class="card-title">🎯 Start Practice Quiz</h5>
+                    <p class="card-text">Test your knowledge with randomized CISSP questions covering all 8 domains. Let Kerbie help you ace the exam!</p>
+                    <a href="/Quiz" class="btn btn-primary btn-lg">🚀 Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -26,7 +35,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 1</h6>
+                    <h6 class="card-title">📊 Domain 1</h6>
                     <p class="card-text">Security and Risk Management</p>
                     <a href="/Domain1" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -35,7 +44,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 2</h6>
+                    <h6 class="card-title">💼 Domain 2</h6>
                     <p class="card-text">Asset Security</p>
                     <a href="/Domain2" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -44,7 +53,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 3</h6>
+                    <h6 class="card-title">🏢 Domain 3</h6>
                     <p class="card-text">Security Architecture and Engineering</p>
                     <a href="/Domain3" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -53,7 +62,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 4</h6>
+                    <h6 class="card-title">🌐 Domain 4</h6>
                     <p class="card-text">Communication and Network Security</p>
                     <a href="/Domain4" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -62,7 +71,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 5</h6>
+                    <h6 class="card-title">🔑 Domain 5</h6>
                     <p class="card-text">Identity and Access Management</p>
                     <a href="/Domain5" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -71,7 +80,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 6</h6>
+                    <h6 class="card-title">🔍 Domain 6</h6>
                     <p class="card-text">Security Assessment and Testing</p>
                     <a href="/Domain6" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -80,7 +89,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 7</h6>
+                    <h6 class="card-title">⚙️ Domain 7</h6>
                     <p class="card-text">Security Operations</p>
                     <a href="/Domain7" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
@@ -89,7 +98,7 @@
         <div class="col-md-6 col-lg-3 mb-3">
             <div class="card h-100">
                 <div class="card-body">
-                    <h6 class="card-title">Domain 8</h6>
+                    <h6 class="card-title">💻 Domain 8</h6>
                     <p class="card-text">Software Development Security</p>
                     <a href="/Domain8" class="btn btn-outline-primary btn-sm">Learn More</a>
                 </div>
