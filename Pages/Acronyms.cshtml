@@ -1,0 +1,187 @@
+@page
+@model AcronymsModel
+@{
+    ViewData["Title"] = "CISSP Acronyms";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container mt-4">
+    <form method="post">
+        @Html.AntiForgeryToken()
+    </form>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>CISSP Acronyms Reference</h1>
+            <p class="lead">Searchable list of important acronyms for CISSP exam preparation.</p>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search acronyms..." />
+                        <button class="btn btn-outline-secondary" type="button" id="clearSearch">Clear</button>
+                    </div>
+                    <small class="text-muted">Total: <span id="totalCount">@Model.Acronyms.Count</span> acronyms</small>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="acronymsTable">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%;">Acronym</th>
+                                    <th>Description</th>
+                                    <th style="width: 15%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var acronym in Model.Acronyms.OrderBy(a => a.Key))
+                                {
+                                    <tr>
+                                        <td><strong>@acronym.Key</strong></td>
+                                        <td>@acronym.Value</td>
+                                        <td>
+                                            <button class="btn btn-outline-info btn-sm tell-me-more" data-acronym="@acronym.Key" data-description="@acronym.Value">
+                                                Tell Me More
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for acronym details -->
+<div class="modal fade" id="acronymModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Acronym Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Getting CISSP exam insights...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const clearButton = document.getElementById('clearSearch');
+    const table = document.getElementById('acronymsTable');
+    const tbody = table.getElementsByTagName('tbody')[0];
+    const rows = Array.from(tbody.getElementsByTagName('tr'));
+    const totalCount = document.getElementById('totalCount');
+    
+    function filterTable() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+        
+        rows.forEach(row => {
+            const acronym = row.cells[0].textContent.toLowerCase();
+            const description = row.cells[1].textContent.toLowerCase();
+            
+            if (acronym.includes(searchTerm) || description.includes(searchTerm)) {
+                row.style.display = '';
+                visibleCount++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        totalCount.textContent = visibleCount;
+    }
+    
+    searchInput.addEventListener('input', filterTable);
+    
+    clearButton.addEventListener('click', function() {
+        searchInput.value = '';
+        filterTable();
+        searchInput.focus();
+    });
+    
+    // Focus search input on page load
+    searchInput.focus();
+    
+    // Handle Tell Me More buttons
+    document.addEventListener('click', async function(e) {
+        if (e.target.classList.contains('tell-me-more')) {
+            const acronym = e.target.getAttribute('data-acronym');
+            const description = e.target.getAttribute('data-description');
+            
+            // Show modal with loading state
+            const modal = new bootstrap.Modal(document.getElementById('acronymModal'));
+            document.getElementById('modalTitle').textContent = `${acronym} - ${description}`;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Getting CISSP exam insights...</p>
+                </div>
+            `;
+            modal.show();
+            
+            try {
+                const formData = new FormData();
+                const tokenElement = document.querySelector('input[name="__RequestVerificationToken"]');
+                if (tokenElement) {
+                    formData.append('__RequestVerificationToken', tokenElement.value);
+                }
+                formData.append('acronym', acronym);
+                formData.append('description', description);
+                
+                const response = await fetch('/Acronyms?handler=GetAcronymDetails', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('modalBody').innerHTML = `
+                        <div class="alert alert-info">
+                            <strong>${acronym}:</strong> ${description}
+                        </div>
+                        <div class="mt-3">
+                            ${data.details.replace(/\n/g, '<br>')}
+                        </div>
+                    `;
+                } else {
+                    const errorText = await response.text();
+                    document.getElementById('modalBody').innerHTML = `
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong> Failed to get details. ${errorText}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('modalBody').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+    });
+});
+</script>

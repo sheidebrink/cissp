@@ -84,5 +84,41 @@ Make it a realistic CISSP-level question with plausible distractors. Return only
                 PropertyNameCaseInsensitive = true
             });
         }
+
+        public async Task<string> GetAcronymDetails(string acronym, string description)
+        {
+            var prompt = $@"Provide detailed CISSP exam information about the acronym '{acronym}' which stands for '{description}'.
+
+Include:
+- What CISSP candidates need to know about this concept
+- Which CISSP domain(s) it relates to
+- Key exam points and common test scenarios
+- Important implementation details or best practices
+- How it relates to other security concepts
+
+Keep the response focused on CISSP exam preparation. Use clear, concise language suitable for certification study.";
+
+            var request = new InvokeModelRequest
+            {
+                ModelId = "amazon.nova-lite-v1:0",
+                ContentType = "application/json",
+                Body = new MemoryStream(JsonSerializer.SerializeToUtf8Bytes(new
+                {
+                    messages = new[]
+                    {
+                        new { role = "user", content = new[] { new { text = prompt } } }
+                    },
+                    inferenceConfig = new
+                    {
+                        maxTokens = 800,
+                        temperature = 0.3
+                    }
+                }))
+            };
+
+            var response = await _bedrockClient.InvokeModelAsync(request);
+            var responseBody = await JsonSerializer.DeserializeAsync<JsonElement>(response.Body);
+            return responseBody.GetProperty("output").GetProperty("message").GetProperty("content")[0].GetProperty("text").GetString();
+        }
     }
 }
