@@ -7,6 +7,20 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
+            <!-- Domain Switcher -->
+            <div class="domain-switcher mb-3">
+                <div class="btn-group" role="group">
+                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">D1</a>
+                    <a href="/Domain2" class="btn btn-outline-primary btn-sm">D2</a>
+                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">D3</a>
+                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">D4</a>
+                    <a href="/Domain5" class="btn btn-primary btn-sm">D5</a>
+                    <a href="/Domain6" class="btn btn-outline-primary btn-sm">D6</a>
+                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">D7</a>
+                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">D8</a>
+                </div>
+            </div>
+            
             <h1>Domain 5: Identity and Access Management</h1>
             <p class="lead">Identity management, access control models, and authentication methods.</p>
             
@@ -23,10 +37,186 @@
                 </div>
             </div>
             
+            <!-- Access Control Models -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔐 Access Control Models</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="access-model mb-4">
+                                <h6>DAC - Discretionary Access Control</h6>
+                                <ul class="small">
+                                    <li><strong>Owner-controlled:</strong> Resource owner sets permissions</li>
+                                    <li><strong>Flexible:</strong> Easy to implement and modify</li>
+                                    <li><strong>Examples:</strong> Windows NTFS, Unix file permissions</li>
+                                    <li><strong>Weakness:</strong> Prone to privilege creep</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Example:</strong> File owner grants read/write access to specific users</small>
+                                </div>
+                            </div>
+                            
+                            <div class="access-model mb-4">
+                                <h6>MAC - Mandatory Access Control</h6>
+                                <ul class="small">
+                                    <li><strong>System-controlled:</strong> Central authority sets permissions</li>
+                                    <li><strong>Label-based:</strong> Uses security labels and clearances</li>
+                                    <li><strong>Examples:</strong> Military systems, SELinux</li>
+                                    <li><strong>Strength:</strong> Prevents unauthorized disclosure</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Example:</strong> User with "Secret" clearance cannot access "Top Secret" files</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="access-model mb-4">
+                                <h6>RBAC - Role-Based Access Control</h6>
+                                <ul class="small">
+                                    <li><strong>Role-centered:</strong> Permissions assigned to roles</li>
+                                    <li><strong>Scalable:</strong> Easy to manage large user populations</li>
+                                    <li><strong>Examples:</strong> Active Directory, enterprise applications</li>
+                                    <li><strong>Principle:</strong> Users inherit permissions from roles</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Example:</strong> "Accountant" role has access to financial systems</small>
+                                </div>
+                            </div>
+                            
+                            <div class="access-model mb-4">
+                                <h6>ABAC - Attribute-Based Access Control</h6>
+                                <ul class="small">
+                                    <li><strong>Context-aware:</strong> Uses multiple attributes for decisions</li>
+                                    <li><strong>Dynamic:</strong> Real-time access decisions</li>
+                                    <li><strong>Examples:</strong> Cloud platforms, modern applications</li>
+                                    <li><strong>Flexibility:</strong> Complex policy expressions</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Example:</strong> Access based on role + location + time + device</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Authentication Methods -->
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🔑 Authentication Factors</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>Something You Know</h6>
+                            <div class="auth-factor mb-3">
+                                <strong>Passwords</strong>
+                                <ul class="small">
+                                    <li>Most common method</li>
+                                    <li>Vulnerable to attacks</li>
+                                    <li>Requires complexity policies</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="auth-factor mb-3">
+                                <strong>Passphrases</strong>
+                                <ul class="small">
+                                    <li>Longer, more memorable</li>
+                                    <li>Higher entropy</li>
+                                    <li>Example: "Coffee!Tastes@Good"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <h6>Something You Have</h6>
+                            <div class="auth-factor mb-3">
+                                <strong>Smart Cards</strong>
+                                <ul class="small">
+                                    <li>Embedded microprocessor</li>
+                                    <li>Stores certificates/keys</li>
+                                    <li>Requires card reader</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="auth-factor mb-3">
+                                <strong>Tokens</strong>
+                                <ul class="small">
+                                    <li>Hardware or software</li>
+                                    <li>Time-based (TOTP)</li>
+                                    <li>One-time passwords</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <h6>Something You Are</h6>
+                            <div class="auth-factor mb-3">
+                                <strong>Fingerprints</strong>
+                                <ul class="small">
+                                    <li>Most common biometric</li>
+                                    <li>Unique ridge patterns</li>
+                                    <li>Can be spoofed</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="auth-factor mb-3">
+                                <strong>Iris/Retina</strong>
+                                <ul class="small">
+                                    <li>Highly accurate</li>
+                                    <li>Difficult to forge</li>
+                                    <li>Specialized equipment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Multi-Factor Authentication (MFA)</h6>
+                        <div class="alert alert-info">
+                            <strong>Best Practice:</strong> Combine factors from different categories
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Common Combinations:</strong>
+                                <ul class="small">
+                                    <li>Password + SMS code</li>
+                                    <li>Smart card + PIN</li>
+                                    <li>Biometric + password</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Benefits:</strong>
+                                <ul class="small">
+                                    <li>Reduces breach risk</li>
+                                    <li>Compensates weak passwords</li>
+                                    <li>Compliance requirement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Identity and Access Management" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
                 <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+            
+            <!-- Domain Navigation -->
+            <div class="domain-navigation mt-5 pt-4 border-top">
+                <div class="d-flex justify-content-between">
+                    <a href="/Domain4" class="btn btn-outline-secondary">
+                        <i class="fas fa-chevron-left"></i> Previous: Domain 4
+                    </a>
+                    <a href="/Domain6" class="btn btn-outline-secondary">
+                        Next: Domain 6 <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

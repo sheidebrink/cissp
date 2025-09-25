@@ -7,6 +7,20 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
+            <!-- Domain Switcher -->
+            <div class="domain-switcher mb-3">
+                <div class="btn-group" role="group">
+                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">D1</a>
+                    <a href="/Domain2" class="btn btn-primary btn-sm">D2</a>
+                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">D3</a>
+                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">D4</a>
+                    <a href="/Domain5" class="btn btn-outline-primary btn-sm">D5</a>
+                    <a href="/Domain6" class="btn btn-outline-primary btn-sm">D6</a>
+                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">D7</a>
+                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">D8</a>
+                </div>
+            </div>
+            
             <h1>Domain 2: Asset Security</h1>
             <p class="lead">Information and asset classification, handling, and retention.</p>
             
@@ -23,10 +37,359 @@
                 </div>
             </div>
             
+            <!-- Data Classification -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">📁 Data Classification</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Government Classification Levels</h6>
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-danger me-2">TOP SECRET</span>
+                                <ul class="small mt-2">
+                                    <li>Exceptionally grave damage to national security</li>
+                                    <li>Highest level of protection required</li>
+                                    <li>Very limited access on need-to-know basis</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-warning text-dark me-2">SECRET</span>
+                                <ul class="small mt-2">
+                                    <li>Serious damage to national security</li>
+                                    <li>Requires security clearance</li>
+                                    <li>Formal access controls required</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-info me-2">CONFIDENTIAL</span>
+                                <ul class="small mt-2">
+                                    <li>Damage to national security</li>
+                                    <li>Lowest level of classified information</li>
+                                    <li>Basic security measures required</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-success me-2">UNCLASSIFIED</span>
+                                <ul class="small mt-2">
+                                    <li>No national security implications</li>
+                                    <li>May still require protection (FOUO)</li>
+                                    <li>Standard business controls</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Commercial Classification Levels</h6>
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-danger me-2">RESTRICTED</span>
+                                <ul class="small mt-2">
+                                    <li>Severe damage if disclosed</li>
+                                    <li>Trade secrets, strategic plans</li>
+                                    <li>Executive-level access only</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-warning text-dark me-2">CONFIDENTIAL</span>
+                                <ul class="small mt-2">
+                                    <li>Significant competitive disadvantage</li>
+                                    <li>Financial data, customer lists</li>
+                                    <li>Need-to-know basis</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-info me-2">INTERNAL</span>
+                                <ul class="small mt-2">
+                                    <li>Internal use only</li>
+                                    <li>Employee information, policies</li>
+                                    <li>Standard employee access</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="classification-item mb-3">
+                                <span class="badge bg-success me-2">PUBLIC</span>
+                                <ul class="small mt-2">
+                                    <li>No harm if disclosed</li>
+                                    <li>Marketing materials, press releases</li>
+                                    <li>No special protection required</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Classification Criteria</h6>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Value</strong>
+                                <ul class="small">
+                                    <li>Economic value to organization</li>
+                                    <li>Cost of replacement</li>
+                                    <li>Revenue impact if lost</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Sensitivity</strong>
+                                <ul class="small">
+                                    <li>Privacy implications</li>
+                                    <li>Regulatory requirements</li>
+                                    <li>Competitive advantage</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Criticality</strong>
+                                <ul class="small">
+                                    <li>Business process dependency</li>
+                                    <li>Operational impact</li>
+                                    <li>Recovery time requirements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Handling -->
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">📎 Data Handling & Retention</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Data Lifecycle Stages</h6>
+                            <div class="timeline">
+                                <div class="timeline-item mb-3">
+                                    <strong>1. Creation/Collection</strong>
+                                    <ul class="small">
+                                        <li>Data classification at creation</li>
+                                        <li>Proper labeling and marking</li>
+                                        <li>Initial access controls</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <strong>2. Storage</strong>
+                                    <ul class="small">
+                                        <li>Appropriate security controls</li>
+                                        <li>Encryption requirements</li>
+                                        <li>Access logging and monitoring</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <strong>3. Use/Processing</strong>
+                                    <ul class="small">
+                                        <li>Authorized access only</li>
+                                        <li>Data integrity verification</li>
+                                        <li>Audit trail maintenance</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <strong>4. Sharing/Transmission</strong>
+                                    <ul class="small">
+                                        <li>Secure transmission methods</li>
+                                        <li>Recipient verification</li>
+                                        <li>Data loss prevention (DLP)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="timeline-item mb-3">
+                                    <strong>5. Archival</strong>
+                                    <ul class="small">
+                                        <li>Long-term storage requirements</li>
+                                        <li>Reduced access controls</li>
+                                        <li>Periodic integrity checks</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <strong>6. Destruction</strong>
+                                    <ul class="small">
+                                        <li>Secure deletion methods</li>
+                                        <li>Certificate of destruction</li>
+                                        <li>Compliance verification</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Data Retention Requirements</h6>
+                            <div class="retention-examples">
+                                <div class="mb-3">
+                                    <strong>Financial Records</strong>
+                                    <ul class="small">
+                                        <li>Tax records: 7 years (IRS)</li>
+                                        <li>Payroll records: 4 years (FLSA)</li>
+                                        <li>Bank statements: 3-7 years</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <strong>Healthcare (HIPAA)</strong>
+                                    <ul class="small">
+                                        <li>Medical records: 6 years minimum</li>
+                                        <li>Some states require longer</li>
+                                        <li>Pediatric records until age of majority + 6 years</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <strong>Legal/Litigation</strong>
+                                    <ul class="small">
+                                        <li>Legal hold requirements</li>
+                                        <li>Statute of limitations considerations</li>
+                                        <li>Discovery obligations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h6 class="mt-4">Secure Disposal Methods</h6>
+                            <div class="disposal-methods">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Physical Media</strong>
+                                        <ul class="small">
+                                            <li>Degaussing (magnetic media)</li>
+                                            <li>Physical destruction/shredding</li>
+                                            <li>Incineration</li>
+                                            <li>Pulverization</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Digital Data</strong>
+                                        <ul class="small">
+                                            <li>Cryptographic erasure</li>
+                                            <li>Multi-pass overwriting</li>
+                                            <li>Block erase (SSDs)</li>
+                                            <li>Secure delete utilities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Asset Management -->
+            <div class="card mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">💻 Asset Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Asset Inventory Components</h6>
+                            <ul>
+                                <li><strong>Hardware Assets</strong>
+                                    <ul class="small">
+                                        <li>Servers, workstations, mobile devices</li>
+                                        <li>Network equipment, storage systems</li>
+                                        <li>IoT devices, printers, peripherals</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Software Assets</strong>
+                                    <ul class="small">
+                                        <li>Operating systems, applications</li>
+                                        <li>Licenses and compliance tracking</li>
+                                        <li>Custom developed software</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Data Assets</strong>
+                                    <ul class="small">
+                                        <li>Databases, file systems</li>
+                                        <li>Intellectual property</li>
+                                        <li>Customer and employee data</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Personnel</strong>
+                                    <ul class="small">
+                                        <li>Employees, contractors, vendors</li>
+                                        <li>Access rights and privileges</li>
+                                        <li>Security awareness and training</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Asset Management Process</h6>
+                            <div class="process-steps">
+                                <div class="step mb-3">
+                                    <strong>1. Identification</strong>
+                                    <ul class="small">
+                                        <li>Asset discovery and cataloging</li>
+                                        <li>Unique asset tagging/numbering</li>
+                                        <li>Owner and custodian assignment</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step mb-3">
+                                    <strong>2. Classification</strong>
+                                    <ul class="small">
+                                        <li>Criticality assessment</li>
+                                        <li>Security requirements determination</li>
+                                        <li>Compliance obligations</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step mb-3">
+                                    <strong>3. Handling</strong>
+                                    <ul class="small">
+                                        <li>Appropriate security controls</li>
+                                        <li>Access management</li>
+                                        <li>Change control procedures</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step mb-3">
+                                    <strong>4. Monitoring</strong>
+                                    <ul class="small">
+                                        <li>Regular inventory updates</li>
+                                        <li>Vulnerability assessments</li>
+                                        <li>Compliance auditing</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step">
+                                    <strong>5. Disposal</strong>
+                                    <ul class="small">
+                                        <li>End-of-life procedures</li>
+                                        <li>Secure data sanitization</li>
+                                        <li>Asset decommissioning</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Asset Security" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
                 <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+            
+            <!-- Domain Navigation -->
+            <div class="domain-navigation mt-5 pt-4 border-top">
+                <div class="d-flex justify-content-between">
+                    <a href="/Domain1" class="btn btn-outline-secondary">
+                        <i class="fas fa-chevron-left"></i> Previous: Domain 1
+                    </a>
+                    <a href="/Domain3" class="btn btn-outline-secondary">
+                        Next: Domain 3 <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

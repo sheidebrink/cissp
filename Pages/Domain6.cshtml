@@ -7,6 +7,20 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
+            <!-- Domain Switcher -->
+            <div class="domain-switcher mb-3">
+                <div class="btn-group" role="group">
+                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">D1</a>
+                    <a href="/Domain2" class="btn btn-outline-primary btn-sm">D2</a>
+                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">D3</a>
+                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">D4</a>
+                    <a href="/Domain5" class="btn btn-outline-primary btn-sm">D5</a>
+                    <a href="/Domain6" class="btn btn-primary btn-sm">D6</a>
+                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">D7</a>
+                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">D8</a>
+                </div>
+            </div>
+            
             <h1>Domain 6: Security Assessment and Testing</h1>
             <p class="lead">Security assessment strategies, testing techniques, and audit processes.</p>
             
@@ -23,10 +37,252 @@
                 </div>
             </div>
             
+            <!-- Assessment Types -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🔍 Security Assessment Types</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="assessment-type mb-4">
+                                <h6>Vulnerability Assessment</h6>
+                                <ul class="small">
+                                    <li><strong>Purpose:</strong> Identify security weaknesses</li>
+                                    <li><strong>Scope:</strong> Automated scanning and analysis</li>
+                                    <li><strong>Output:</strong> List of vulnerabilities with severity</li>
+                                    <li><strong>Frequency:</strong> Regular, often automated</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Tools:</strong> Nessus, OpenVAS, Qualys</small>
+                                </div>
+                            </div>
+                            
+                            <div class="assessment-type mb-4">
+                                <h6>Penetration Testing</h6>
+                                <ul class="small">
+                                    <li><strong>Purpose:</strong> Simulate real-world attacks</li>
+                                    <li><strong>Scope:</strong> Exploit vulnerabilities to gain access</li>
+                                    <li><strong>Output:</strong> Proof of concept and impact analysis</li>
+                                    <li><strong>Frequency:</strong> Periodic, typically annual</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Tools:</strong> Metasploit, Burp Suite, Kali Linux</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="assessment-type mb-4">
+                                <h6>Security Audit</h6>
+                                <ul class="small">
+                                    <li><strong>Purpose:</strong> Verify compliance with policies</li>
+                                    <li><strong>Scope:</strong> Review controls and procedures</li>
+                                    <li><strong>Output:</strong> Compliance report with findings</li>
+                                    <li><strong>Frequency:</strong> Annual or as required</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Standards:</strong> ISO 27001, SOC 2, PCI DSS</small>
+                                </div>
+                            </div>
+                            
+                            <div class="assessment-type mb-4">
+                                <h6>Red Team Exercise</h6>
+                                <ul class="small">
+                                    <li><strong>Purpose:</strong> Test detection and response</li>
+                                    <li><strong>Scope:</strong> Full attack simulation</li>
+                                    <li><strong>Output:</strong> Security posture evaluation</li>
+                                    <li><strong>Frequency:</strong> Periodic, comprehensive</li>
+                                </ul>
+                                <div class="example-box bg-light p-2 mt-2">
+                                    <small><strong>Focus:</strong> People, processes, and technology</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testing Methodologies -->
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🎯 Testing Methodologies</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>Black Box Testing</h6>
+                            <ul class="small">
+                                <li><strong>Knowledge:</strong> No internal knowledge</li>
+                                <li><strong>Approach:</strong> External attacker perspective</li>
+                                <li><strong>Advantages:</strong> Realistic attack simulation</li>
+                                <li><strong>Disadvantages:</strong> Time-consuming, may miss issues</li>
+                            </ul>
+                            
+                            <h6 class="mt-3">White Box Testing</h6>
+                            <ul class="small">
+                                <li><strong>Knowledge:</strong> Full system knowledge</li>
+                                <li><strong>Approach:</strong> Internal perspective</li>
+                                <li><strong>Advantages:</strong> Comprehensive coverage</li>
+                                <li><strong>Disadvantages:</strong> Less realistic</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <h6>Gray Box Testing</h6>
+                            <ul class="small">
+                                <li><strong>Knowledge:</strong> Limited internal knowledge</li>
+                                <li><strong>Approach:</strong> Hybrid methodology</li>
+                                <li><strong>Advantages:</strong> Balanced approach</li>
+                                <li><strong>Use Case:</strong> Most common in practice</li>
+                            </ul>
+                            
+                            <h6 class="mt-3">Testing Phases</h6>
+                            <ol class="small">
+                                <li><strong>Planning:</strong> Scope, rules of engagement</li>
+                                <li><strong>Discovery:</strong> Information gathering</li>
+                                <li><strong>Attack:</strong> Vulnerability exploitation</li>
+                                <li><strong>Reporting:</strong> Findings and recommendations</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <h6>OWASP Testing Guide</h6>
+                            <ul class="small">
+                                <li>Information Gathering</li>
+                                <li>Configuration Management</li>
+                                <li>Identity Management</li>
+                                <li>Authentication Testing</li>
+                                <li>Authorization Testing</li>
+                                <li>Session Management</li>
+                                <li>Input Validation</li>
+                                <li>Error Handling</li>
+                                <li>Cryptography</li>
+                                <li>Business Logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vulnerability Management -->
+            <div class="card mt-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🔧 Vulnerability Management Process</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Process Steps</h6>
+                            <div class="process-step mb-3">
+                                <strong>1. Asset Discovery</strong>
+                                <ul class="small">
+                                    <li>Network scanning and inventory</li>
+                                    <li>Service and application identification</li>
+                                    <li>Asset classification and prioritization</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="process-step mb-3">
+                                <strong>2. Vulnerability Identification</strong>
+                                <ul class="small">
+                                    <li>Automated vulnerability scanning</li>
+                                    <li>Manual testing and verification</li>
+                                    <li>Threat intelligence integration</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="process-step mb-3">
+                                <strong>3. Risk Assessment</strong>
+                                <ul class="small">
+                                    <li>CVSS scoring and analysis</li>
+                                    <li>Business impact evaluation</li>
+                                    <li>Exploitability assessment</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="process-step mb-3">
+                                <strong>4. Remediation</strong>
+                                <ul class="small">
+                                    <li>Patch management and deployment</li>
+                                    <li>Configuration changes</li>
+                                    <li>Compensating controls</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="process-step">
+                                <strong>5. Verification</strong>
+                                <ul class="small">
+                                    <li>Re-scanning and validation</li>
+                                    <li>Effectiveness testing</li>
+                                    <li>Continuous monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>CVSS Scoring System</h6>
+                            <div class="cvss-info mb-3">
+                                <strong>Base Score Components:</strong>
+                                <ul class="small">
+                                    <li><strong>Attack Vector:</strong> Network, Adjacent, Local, Physical</li>
+                                    <li><strong>Attack Complexity:</strong> Low, High</li>
+                                    <li><strong>Privileges Required:</strong> None, Low, High</li>
+                                    <li><strong>User Interaction:</strong> None, Required</li>
+                                    <li><strong>Scope:</strong> Unchanged, Changed</li>
+                                    <li><strong>Impact:</strong> Confidentiality, Integrity, Availability</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="severity-levels">
+                                <strong>Severity Ratings:</strong>
+                                <div class="severity-item mb-2">
+                                    <span class="badge bg-danger me-2">CRITICAL</span>
+                                    <span class="small">9.0-10.0 - Immediate action required</span>
+                                </div>
+                                <div class="severity-item mb-2">
+                                    <span class="badge bg-warning text-dark me-2">HIGH</span>
+                                    <span class="small">7.0-8.9 - Urgent remediation</span>
+                                </div>
+                                <div class="severity-item mb-2">
+                                    <span class="badge bg-info me-2">MEDIUM</span>
+                                    <span class="small">4.0-6.9 - Scheduled remediation</span>
+                                </div>
+                                <div class="severity-item">
+                                    <span class="badge bg-success me-2">LOW</span>
+                                    <span class="small">0.1-3.9 - Monitor and plan</span>
+                                </div>
+                            </div>
+                            
+                            <h6 class="mt-4">Key Metrics</h6>
+                            <ul class="small">
+                                <li><strong>Mean Time to Detection (MTTD)</strong></li>
+                                <li><strong>Mean Time to Remediation (MTTR)</strong></li>
+                                <li><strong>Vulnerability Density</strong> (vulns per asset)</li>
+                                <li><strong>Remediation Rate</strong> (% fixed within SLA)</li>
+                                <li><strong>Risk Reduction</strong> (before/after scores)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security Assessment and Testing" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
                 <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+            
+            <!-- Domain Navigation -->
+            <div class="domain-navigation mt-5 pt-4 border-top">
+                <div class="d-flex justify-content-between">
+                    <a href="/Domain5" class="btn btn-outline-secondary">
+                        <i class="fas fa-chevron-left"></i> Previous: Domain 5
+                    </a>
+                    <a href="/Domain7" class="btn btn-outline-secondary">
+                        Next: Domain 7 <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
