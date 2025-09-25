@@ -23,6 +23,273 @@
                 </div>
             </div>
             
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Symmetric vs Asymmetric Cryptography</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-success">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">🔐 Symmetric Cryptography</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Same key for encryption and decryption</strong></p>
+                                    <p><strong>Advantages:</strong></p>
+                                    <ul>
+                                        <li>Fast encryption/decryption</li>
+                                        <li>Low computational overhead</li>
+                                        <li>Suitable for large data volumes</li>
+                                    </ul>
+                                    <p><strong>Disadvantages:</strong></p>
+                                    <ul>
+                                        <li>Key distribution problem</li>
+                                        <li>Key management complexity</li>
+                                        <li>No non-repudiation</li>
+                                    </ul>
+                                    <p><strong>Use Cases:</strong></p>
+                                    <ul>
+                                        <li>Bulk data encryption</li>
+                                        <li>VPN tunnels</li>
+                                        <li>Database encryption</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">🔑 Asymmetric Cryptography</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Different keys for encryption and decryption</strong></p>
+                                    <p><strong>Advantages:</strong></p>
+                                    <ul>
+                                        <li>Solves key distribution problem</li>
+                                        <li>Provides non-repudiation</li>
+                                        <li>Digital signatures possible</li>
+                                    </ul>
+                                    <p><strong>Disadvantages:</strong></p>
+                                    <ul>
+                                        <li>Slow encryption/decryption</li>
+                                        <li>High computational overhead</li>
+                                        <li>Not suitable for large data</li>
+                                    </ul>
+                                    <p><strong>Use Cases:</strong></p>
+                                    <ul>
+                                        <li>Key exchange</li>
+                                        <li>Digital signatures</li>
+                                        <li>Small message encryption</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Block Ciphers and Algorithms</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>Type</th>
+                                    <th>Key Size</th>
+                                    <th>Block Size</th>
+                                    <th>Status</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>AES</strong></td>
+                                    <td>Symmetric Block</td>
+                                    <td>128, 192, 256 bits</td>
+                                    <td>128 bits</td>
+                                    <td>🟢 Current Standard</td>
+                                    <td>Rijndael algorithm, FIPS 197</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DES</strong></td>
+                                    <td>Symmetric Block</td>
+                                    <td>56 bits (64 with parity)</td>
+                                    <td>64 bits</td>
+                                    <td>🔴 Deprecated</td>
+                                    <td>Too weak, easily broken</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3DES</strong></td>
+                                    <td>Symmetric Block</td>
+                                    <td>112 or 168 bits</td>
+                                    <td>64 bits</td>
+                                    <td>🟡 Legacy</td>
+                                    <td>Triple DES, being phased out</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blowfish</strong></td>
+                                    <td>Symmetric Block</td>
+                                    <td>32-448 bits</td>
+                                    <td>64 bits</td>
+                                    <td>🟡 Legacy</td>
+                                    <td>Fast, variable key length</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Twofish</strong></td>
+                                    <td>Symmetric Block</td>
+                                    <td>128, 192, 256 bits</td>
+                                    <td>128 bits</td>
+                                    <td>🟢 Secure</td>
+                                    <td>AES finalist, still secure</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RSA</strong></td>
+                                    <td>Asymmetric</td>
+                                    <td>1024-4096 bits</td>
+                                    <td>Variable</td>
+                                    <td>🟢 Current</td>
+                                    <td>Most common public key algorithm</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ECC</strong></td>
+                                    <td>Asymmetric</td>
+                                    <td>160-571 bits</td>
+                                    <td>Variable</td>
+                                    <td>🟢 Current</td>
+                                    <td>Smaller keys, same security as RSA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Block Cipher Modes of Operation</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mode</th>
+                                    <th>Full Name</th>
+                                    <th>Characteristics</th>
+                                    <th>Pros</th>
+                                    <th>Cons</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ECB</strong></td>
+                                    <td>Electronic Codebook</td>
+                                    <td>Each block encrypted independently</td>
+                                    <td>Simple, parallel processing</td>
+                                    <td>Patterns visible, not secure</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CBC</strong></td>
+                                    <td>Cipher Block Chaining</td>
+                                    <td>Each block XORed with previous</td>
+                                    <td>Hides patterns, widely supported</td>
+                                    <td>Sequential, error propagation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CFB</strong></td>
+                                    <td>Cipher Feedback</td>
+                                    <td>Stream cipher from block cipher</td>
+                                    <td>Self-synchronizing</td>
+                                    <td>Error propagation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OFB</strong></td>
+                                    <td>Output Feedback</td>
+                                    <td>Keystream generated independently</td>
+                                    <td>No error propagation</td>
+                                    <td>Not self-synchronizing</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CTR</strong></td>
+                                    <td>Counter</td>
+                                    <td>Counter encrypted to create keystream</td>
+                                    <td>Parallel, random access</td>
+                                    <td>Counter must not repeat</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>GCM</strong></td>
+                                    <td>Galois/Counter Mode</td>
+                                    <td>CTR mode with authentication</td>
+                                    <td>Encryption + authentication</td>
+                                    <td>More complex implementation</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Key Management Concepts</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Key Lifecycle</h6>
+                            <ol>
+                                <li><strong>Generation:</strong> Create cryptographically strong keys</li>
+                                <li><strong>Distribution:</strong> Securely deliver keys to users</li>
+                                <li><strong>Storage:</strong> Protect keys at rest</li>
+                                <li><strong>Usage:</strong> Control how keys are used</li>
+                                <li><strong>Rotation:</strong> Replace keys periodically</li>
+                                <li><strong>Revocation:</strong> Invalidate compromised keys</li>
+                                <li><strong>Destruction:</strong> Securely delete old keys</li>
+                            </ol>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Key Strength Guidelines</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Security Level</th>
+                                            <th>Symmetric</th>
+                                            <th>RSA</th>
+                                            <th>ECC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>80-bit</td>
+                                            <td>80 bits</td>
+                                            <td>1024 bits</td>
+                                            <td>160 bits</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-bit</td>
+                                            <td>112 bits</td>
+                                            <td>2048 bits</td>
+                                            <td>224 bits</td>
+                                        </tr>
+                                        <tr>
+                                            <td>128-bit</td>
+                                            <td>128 bits</td>
+                                            <td>3072 bits</td>
+                                            <td>256 bits</td>
+                                        </tr>
+                                        <tr>
+                                            <td>256-bit</td>
+                                            <td>256 bits</td>
+                                            <td>15360 bits</td>
+                                            <td>512 bits</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security Architecture and Engineering" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>

@@ -23,6 +23,281 @@
                 </div>
             </div>
             
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>Common Vulnerabilities with Code Examples</h5>
+                    
+                    <div class="accordion" id="vulnerabilityAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sqlInjection">
+                                    <span class="badge bg-danger me-2">Critical</span> SQL Injection
+                                </button>
+                            </h2>
+                            <div id="sqlInjection" class="accordion-collapse collapse show" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">❌ Vulnerable Code</h6>
+                                            <pre><code class="language-csharp">// C# - Vulnerable to SQL Injection
+string query = "SELECT * FROM users WHERE " +
+               "username = '" + username + "' AND " +
+               "password = '" + password + "'";
+SqlCommand cmd = new SqlCommand(query, conn);
+SqlDataReader reader = cmd.ExecuteReader();
+
+// Attack: username = "admin'--"
+// Result: SELECT * FROM users WHERE username = 'admin'--' AND password = ''
+// The -- comments out the password check!</code></pre>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">✅ Secure Code</h6>
+                                            <pre><code class="language-csharp">// C# - Using Parameterized Queries
+string query = "SELECT * FROM users WHERE " +
+               "username = @@username AND " +
+               "password = @@password";
+SqlCommand cmd = new SqlCommand(query, conn);
+cmd.Parameters.AddWithValue("@@username", username);
+cmd.Parameters.AddWithValue("@@password", password);
+SqlDataReader reader = cmd.ExecuteReader();</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#xss">
+                                    <span class="badge bg-warning me-2">High</span> Cross-Site Scripting (XSS)
+                                </button>
+                            </h2>
+                            <div id="xss" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">❌ Vulnerable Code</h6>
+                                            <pre><code class="language-html">&lt;!-- HTML - Vulnerable to XSS --&gt;
+&lt;div&gt;Welcome, &lt;%%= Request["name"] %%&gt;&lt;/div&gt;
+
+&lt;!-- Attack: name = "&lt;script&gt;alert('XSS')&lt;/script&gt;" --&gt;
+&lt;!-- Result: &lt;div&gt;Welcome, &lt;script&gt;alert('XSS')&lt;/script&gt;&lt;/div&gt; --&gt;
+&lt;!-- Script executes in user's browser! --&gt;</code></pre>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">✅ Secure Code</h6>
+                                            <pre><code class="language-html">&lt;!-- HTML - Using HTML Encoding --&gt;
+&lt;div&gt;Welcome, &lt;%%= HttpUtility.HtmlEncode(Request["name"]) %%&gt;&lt;/div&gt;
+
+&lt;!-- Result: &lt;div&gt;Welcome, &amp;lt;script&amp;gt;alert('XSS')&amp;lt;/script&amp;gt;&lt;/div&gt; --&gt;
+&lt;!-- Script is displayed as text, not executed --&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bufferOverflow">
+                                    <span class="badge bg-danger me-2">Critical</span> Buffer Overflow
+                                </button>
+                            </h2>
+                            <div id="bufferOverflow" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">❌ Vulnerable Code</h6>
+                                            <pre><code class="language-c">// C - Vulnerable to Buffer Overflow
+#include &lt;string.h&gt;
+
+void vulnerable_function(char *input) {
+    char buffer[100];
+    strcpy(buffer, input);  // No bounds checking!
+    printf("Input: %s\n", buffer);
+}
+
+// Attack: input longer than 100 chars
+// Can overwrite return address and execute arbitrary code</code></pre>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">✅ Secure Code</h6>
+                                            <pre><code class="language-c">// C - Using Safe String Functions
+#include &lt;string.h&gt;
+
+void secure_function(char *input) {
+    char buffer[100];
+    strncpy(buffer, input, sizeof(buffer) - 1);
+    buffer[sizeof(buffer) - 1] = '\0';  // Ensure null termination
+    printf("Input: %s\n", buffer);
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pathTraversal">
+                                    <span class="badge bg-warning me-2">High</span> Path Traversal
+                                </button>
+                            </h2>
+                            <div id="pathTraversal" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">❌ Vulnerable Code</h6>
+                                            <pre><code class="language-java">// Java - Vulnerable to Path Traversal
+public void readFile(String filename) {
+    try {
+        File file = new File("/uploads/" + filename);
+        FileInputStream fis = new FileInputStream(file);
+        // Read file content...
+    } catch (Exception e) {
+        // Handle error
+    }
+}
+
+// Attack: filename = "../../../etc/passwd"
+// Result: Reads /etc/passwd instead of intended file!</code></pre>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">✅ Secure Code</h6>
+                                            <pre><code class="language-java">// Java - Input Validation and Canonicalization
+public void readFile(String filename) {
+    try {
+        // Validate filename
+        if (filename.contains("..") || filename.contains("/")) {
+            throw new SecurityException("Invalid filename");
+        }
+        
+        File baseDir = new File("/uploads/");
+        File file = new File(baseDir, filename);
+        
+        // Ensure file is within base directory
+        if (!file.getCanonicalPath().startsWith(baseDir.getCanonicalPath())) {
+            throw new SecurityException("Path traversal detected");
+        }
+        
+        FileInputStream fis = new FileInputStream(file);
+        // Read file content...
+    } catch (Exception e) {
+        // Handle error
+    }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#weakCrypto">
+                                    <span class="badge bg-info me-2">Medium</span> Weak Cryptography
+                                </button>
+                            </h2>
+                            <div id="weakCrypto" class="accordion-collapse collapse" data-bs-parent="#vulnerabilityAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">❌ Vulnerable Code</h6>
+                                            <pre><code class="language-python"># Python - Weak Cryptography
+import hashlib
+
+def hash_password(password):
+    # MD5 is cryptographically broken!
+    return hashlib.md5(password.encode()).hexdigest()
+
+def encrypt_data(data, key):
+    # DES is too weak (56-bit key)
+    from Crypto.Cipher import DES
+    cipher = DES.new(key, DES.MODE_ECB)  # ECB mode is insecure
+    return cipher.encrypt(data)</code></pre>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">✅ Secure Code</h6>
+                                            <pre><code class="language-python"># Python - Strong Cryptography
+import hashlib
+import os
+from Crypto.Cipher import AES
+from Crypto.Protocol.KDF import PBKDF2
+
+def hash_password(password):
+    # Use strong hashing with salt
+    salt = os.urandom(32)
+    pwdhash = hashlib.pbkdf2_hmac('sha256', 
+                                  password.encode('utf-8'), 
+                                  salt, 100000)
+    return salt + pwdhash
+
+def encrypt_data(data, password):
+    # Use AES with secure mode
+    salt = os.urandom(16)
+    key = PBKDF2(password, salt, 32, count=100000)
+    cipher = AES.new(key, AES.MODE_GCM)
+    ciphertext, tag = cipher.encrypt_and_digest(data)
+    return salt + cipher.nonce + tag + ciphertext</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5>OWASP Top 10 Quick Reference</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Vulnerability</th>
+                                    <th>Description</th>
+                                    <th>Prevention</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Injection</td>
+                                    <td>SQL, NoSQL, OS command injection</td>
+                                    <td>Parameterized queries, input validation</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Broken Authentication</td>
+                                    <td>Weak session management</td>
+                                    <td>Strong authentication, secure sessions</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Sensitive Data Exposure</td>
+                                    <td>Unprotected sensitive data</td>
+                                    <td>Encryption at rest and in transit</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>XML External Entities</td>
+                                    <td>XXE attacks via XML processing</td>
+                                    <td>Disable external entity processing</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Broken Access Control</td>
+                                    <td>Improper authorization checks</td>
+                                    <td>Principle of least privilege</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Software Development Security" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
