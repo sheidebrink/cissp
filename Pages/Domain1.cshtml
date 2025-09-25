@@ -188,6 +188,147 @@
                 </div>
             </div>
             
+            <!-- Risk Assessment Calculations -->
+            <div class="card mt-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">📊 Risk Assessment Calculations</h5>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <strong>CISSP Exam Focus:</strong> Memorize these formulas and understand how to apply them in scenarios.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Core Risk Formulas</h6>
+                            
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">AV - Asset Value</h6>
+                                <p class="mb-2"><strong>Definition:</strong> The monetary value of an asset</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>AV = Replacement Cost + Data Value + Productivity Loss</code>
+                                </div>
+                                <p class="small mt-2"><strong>Example:</strong> Server worth $10,000 + Data worth $50,000 + Downtime cost $5,000 = $65,000 AV</p>
+                            </div>
+                            
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">EF - Exposure Factor</h6>
+                                <p class="mb-2"><strong>Definition:</strong> Percentage of asset value lost if threat occurs</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>EF = % of Asset Value Lost (0.0 to 1.0)</code>
+                                </div>
+                                <p class="small mt-2"><strong>Examples:</strong> Fire destroys server = 1.0 (100%), Virus corrupts 30% of data = 0.3 (30%)</p>
+                            </div>
+                            
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">SLE - Single Loss Expectancy</h6>
+                                <p class="mb-2"><strong>Definition:</strong> Expected monetary loss from a single threat occurrence</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>SLE = AV × EF</code>
+                                </div>
+                                <p class="small mt-2"><strong>Example:</strong> $65,000 AV × 0.3 EF = $19,500 SLE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">ARO - Annualized Rate of Occurrence</h6>
+                                <p class="mb-2"><strong>Definition:</strong> Expected frequency of threat occurrence per year</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>ARO = Number of Times Per Year</code>
+                                </div>
+                                <p class="small mt-2"><strong>Examples:</strong> Daily = 365, Monthly = 12, Once every 5 years = 0.2</p>
+                            </div>
+                            
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">ALE - Annualized Loss Expectancy</h6>
+                                <p class="mb-2"><strong>Definition:</strong> Expected monetary loss per year from a specific threat</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>ALE = SLE × ARO</code>
+                                </div>
+                                <p class="small mt-2"><strong>Example:</strong> $19,500 SLE × 0.2 ARO = $3,900 ALE</p>
+                            </div>
+                            
+                            <div class="formula-card bg-light p-3 mb-3 border">
+                                <h6 class="text-primary">Cost-Benefit Analysis</h6>
+                                <p class="mb-2"><strong>Definition:</strong> Determine if safeguard is cost-effective</p>
+                                <div class="formula-box bg-white p-2 border">
+                                    <code>Annual Savings = ALE(before) - ALE(after) - Annual Safeguard Cost</code>
+                                </div>
+                                <p class="small mt-2"><strong>Rule:</strong> Implement safeguard only if Annual Savings > 0</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Practical Example Scenario</h6>
+                        <div class="example-scenario bg-info bg-opacity-10 p-3 border border-info">
+                            <p><strong>Scenario:</strong> E-commerce server vulnerable to DDoS attacks</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Given Values:</strong>
+                                    <ul class="small">
+                                        <li>Server replacement cost: $15,000</li>
+                                        <li>Revenue loss during downtime: $50,000</li>
+                                        <li>DDoS causes 100% service unavailability</li>
+                                        <li>DDoS attacks occur twice per year</li>
+                                        <li>DDoS protection service costs $8,000/year</li>
+                                        <li>Protection reduces impact to 10%</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <strong>Calculations:</strong>
+                                    <ul class="small">
+                                        <li>AV = $15,000 + $50,000 = $65,000</li>
+                                        <li>EF (without protection) = 1.0 (100%)</li>
+                                        <li>SLE = $65,000 × 1.0 = $65,000</li>
+                                        <li>ARO = 2 (twice per year)</li>
+                                        <li>ALE (before) = $65,000 × 2 = $130,000</li>
+                                        <li>ALE (after) = $65,000 × 0.1 × 2 = $13,000</li>
+                                        <li>Annual Savings = $130,000 - $13,000 - $8,000 = $109,000</li>
+                                    </ul>
+                                    <div class="alert alert-success mt-2">
+                                        <strong>Decision:</strong> Implement DDoS protection (saves $109,000/year)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Key Exam Tips</h6>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Formula Memory</strong>
+                                <ul class="small">
+                                    <li>SLE = AV × EF</li>
+                                    <li>ALE = SLE × ARO</li>
+                                    <li>ALE = AV × EF × ARO</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Common Mistakes</strong>
+                                <ul class="small">
+                                    <li>Confusing EF as dollar amount (it's a percentage)</li>
+                                    <li>Forgetting to convert time periods to annual</li>
+                                    <li>Not including all cost components in AV</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Decision Rules</strong>
+                                <ul class="small">
+                                    <li>Safeguard cost < ALE reduction = Implement</li>
+                                    <li>Consider qualitative factors too</li>
+                                    <li>Multiple threats may share safeguards</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security and Risk Management" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
