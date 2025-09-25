@@ -64,6 +64,38 @@
         <div id="voice-status" class="alert alert-info" style="display: none; position: fixed; top: 80px; right: 20px; z-index: 1050; width: 300px;">
             🎤 Voice navigation active. Say "Kerbie Domain 1" to navigate.
         </div>
+        
+        <!-- Voice Acronym Modal -->
+        <div class="modal fade" id="voiceAcronymModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">
+                            <span style="position: relative; display: inline-block;">
+                                🛡️
+                                <span style="position: absolute; top: 3px; left: 35%; font-size: 0.4em; color: white;">•</span>
+                                <span style="position: absolute; top: 3px; right: 35%; font-size: 0.4em; color: white;">•</span>
+                                <span style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); font-size: 0.3em; color: white;">‿</span>
+                            </span>
+                            Kerbie Says
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="acronymModalBody">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Looking up acronym...</span>
+                            </div>
+                            <p class="mt-2">Looking up acronym...</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="repeatSpeech">🔊 Repeat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -162,6 +194,35 @@
                             console.log('Navigating to Quiz');
                             window.location.href = '/Quiz';
                         } else if (transcript.includes('acronym')) {
+                            // Handle "kerbie acronym [acronym_name]" - lookup specific acronym
+                            console.log('Acronym command detected in transcript:', transcript);
+                            
+                            // Try different patterns to extract acronym
+                            let acronymName = null;
+                            
+                            // Pattern 1: "acronym word" (e.g., "acronym aaa")
+                            let match = transcript.match(/acronym\s+(\w+)/);
+                            if (match) {
+                                acronymName = match[1].toUpperCase();
+                            }
+                            
+                            // Pattern 2: "acronym a. a. a." or "acronym a a a" (spelled out letters)
+                            if (!acronymName) {
+                                const letterPattern = /acronym\s+([a-z](?:[.\s]+[a-z])*)/i;
+                                match = transcript.match(letterPattern);
+                                if (match) {
+                                    // Remove dots and spaces, join letters
+                                    acronymName = match[1].replace(/[.\s]/g, '').toUpperCase();
+                                }
+                            }
+                            
+                            if (acronymName && acronymName.length > 0) {
+                                console.log('Looking up acronym:', acronymName);
+                                lookupAcronym(acronymName);
+                            } else {
+                                console.log('Could not extract acronym from:', transcript);
+                            }
+                        } else if (transcript.includes('acronyms')) {
                             console.log('Navigating to Acronyms');
                             window.location.href = '/Acronyms';
                         } else if (transcript.includes('admin')) {
@@ -217,6 +278,206 @@
         } else {
             initVoiceRecognition();
         }
+        
+        // Acronym lookup functionality
+        const acronyms = {
+            'AAA': 'Authentication, Authorization, and Accounting',
+            'ABAC': 'Attribute-Based Access Control',
+            'ACL': 'Access Control List',
+            'AES': 'Advanced Encryption Standard',
+            'APT': 'Advanced Persistent Threat',
+            'BCP': 'Business Continuity Planning',
+            'BIA': 'Business Impact Analysis',
+            'CA': 'Certificate Authority',
+            'CCTV': 'Closed-Circuit Television',
+            'CIA': 'Confidentiality, Integrity, and Availability',
+            'CIRT': 'Computer Incident Response Team',
+            'CISSP': 'Certified Information Systems Security Professional',
+            'COOP': 'Continuity of Operations Plan',
+            'COTS': 'Commercial Off-The-Shelf',
+            'CRL': 'Certificate Revocation List',
+            'CSF': 'Cybersecurity Framework',
+            'DAC': 'Discretionary Access Control',
+            'DDOS': 'Distributed Denial of Service',
+            'DES': 'Data Encryption Standard',
+            'DHCP': 'Dynamic Host Configuration Protocol',
+            'DMZ': 'Demilitarized Zone',
+            'DNS': 'Domain Name System',
+            'DOS': 'Denial of Service',
+            'DRP': 'Disaster Recovery Plan',
+            'DSS': 'Digital Signature Standard',
+            'EAL': 'Evaluation Assurance Level',
+            'ECC': 'Elliptic Curve Cryptography',
+            'FIPS': 'Federal Information Processing Standards',
+            'FTP': 'File Transfer Protocol',
+            'GDPR': 'General Data Protection Regulation',
+            'HIPAA': 'Health Insurance Portability and Accountability Act',
+            'HIDS': 'Host-based Intrusion Detection System',
+            'HIPS': 'Host-based Intrusion Prevention System',
+            'HMAC': 'Hash-based Message Authentication Code',
+            'HTTP': 'Hypertext Transfer Protocol',
+            'HTTPS': 'Hypertext Transfer Protocol Secure',
+            'IAAS': 'Infrastructure as a Service',
+            'IAM': 'Identity and Access Management',
+            'ICMP': 'Internet Control Message Protocol',
+            'IDS': 'Intrusion Detection System',
+            'IEEE': 'Institute of Electrical and Electronics Engineers',
+            'IPSEC': 'Internet Protocol Security',
+            'IPS': 'Intrusion Prevention System',
+            'ISO': 'International Organization for Standardization',
+            'ITIL': 'Information Technology Infrastructure Library',
+            'IV': 'Initialization Vector',
+            'KDC': 'Key Distribution Center',
+            'LDAP': 'Lightweight Directory Access Protocol',
+            'MAC': 'Mandatory Access Control',
+            'MFA': 'Multi-Factor Authentication',
+            'MTBF': 'Mean Time Between Failures',
+            'MTTR': 'Mean Time To Recovery',
+            'NAC': 'Network Access Control',
+            'NAT': 'Network Address Translation',
+            'NIDS': 'Network-based Intrusion Detection System',
+            'NIPS': 'Network-based Intrusion Prevention System',
+            'NIST': 'National Institute of Standards and Technology',
+            'OCSP': 'Online Certificate Status Protocol',
+            'OSI': 'Open Systems Interconnection',
+            'OWASP': 'Open Web Application Security Project',
+            'PAAS': 'Platform as a Service',
+            'PAM': 'Privileged Access Management',
+            'PCI': 'Payment Card Industry Data Security Standard',
+            'PGP': 'Pretty Good Privacy',
+            'PHI': 'Protected Health Information',
+            'PII': 'Personally Identifiable Information',
+            'PKI': 'Public Key Infrastructure',
+            'RBAC': 'Role-Based Access Control',
+            'RFC': 'Request for Comments',
+            'RPC': 'Remote Procedure Call',
+            'RPO': 'Recovery Point Objective',
+            'RSA': 'Rivest-Shamir-Adleman',
+            'RTO': 'Recovery Time Objective',
+            'SAAS': 'Software as a Service',
+            'SAML': 'Security Assertion Markup Language',
+            'SDLC': 'Software Development Life Cycle',
+            'SHA': 'Secure Hash Algorithm',
+            'SIEM': 'Security Information and Event Management',
+            'SLA': 'Service Level Agreement',
+            'SMTP': 'Simple Mail Transfer Protocol',
+            'SNMP': 'Simple Network Management Protocol',
+            'SOA': 'Service-Oriented Architecture',
+            'SOAP': 'Simple Object Access Protocol',
+            'SOC': 'Security Operations Center',
+            'SOX': 'Sarbanes-Oxley Act',
+            'SQL': 'Structured Query Language',
+            'SSH': 'Secure Shell',
+            'SSL': 'Secure Sockets Layer',
+            'SSO': 'Single Sign-On',
+            'TCP': 'Transmission Control Protocol',
+            'TLS': 'Transport Layer Security',
+            'TPM': 'Trusted Platform Module',
+            'UDP': 'User Datagram Protocol',
+            'UPS': 'Uninterruptible Power Supply',
+            'URL': 'Uniform Resource Locator',
+            'VPN': 'Virtual Private Network',
+            'WAF': 'Web Application Firewall',
+            'WPA': 'Wi-Fi Protected Access',
+            'XML': 'Extensible Markup Language'
+        };
+        
+        let currentSpeechText = '';
+        
+        function lookupAcronym(acronymName) {
+            const modal = new bootstrap.Modal(document.getElementById('voiceAcronymModal'));
+            const modalBody = document.getElementById('acronymModalBody');
+            
+            // Show loading state
+            modalBody.innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Looking up acronym...</span>
+                    </div>
+                    <p class="mt-2">Looking up ${acronymName}...</p>
+                </div>
+            `;
+            modal.show();
+            
+            // Simulate lookup delay
+            setTimeout(() => {
+                const definition = acronyms[acronymName];
+                if (definition) {
+                    currentSpeechText = `${acronymName} stands for ${definition}`;
+                    modalBody.innerHTML = `
+                        <div class="text-center">
+                            <h2 class="text-primary mb-3">${acronymName}</h2>
+                            <div class="alert alert-info">
+                                <h5 class="mb-0">${definition}</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="text-muted">Kerbie says: "${currentSpeechText}"</p>
+                                <span class="badge bg-success" id="speakingBadge">🔊 Speaking...</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Speak the definition with better settings
+                    speakText(currentSpeechText);
+                } else {
+                    currentSpeechText = `Sorry, I don't know what ${acronymName} stands for`;
+                    modalBody.innerHTML = `
+                        <div class="text-center">
+                            <h2 class="text-warning mb-3">${acronymName}</h2>
+                            <div class="alert alert-warning">
+                                <h5 class="mb-0">Sorry, I don't have this acronym in my database.</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="text-muted">Kerbie says: "${currentSpeechText}"</p>
+                                <span class="badge bg-warning">🤷 Unknown</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    speakText(currentSpeechText);
+                }
+            }, 500);
+        }
+        
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                // Stop any current speech
+                speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.7;  // Slower for clarity
+                utterance.pitch = 1.0; // Normal pitch
+                utterance.volume = 1.0; // Full volume
+                
+                utterance.onstart = function() {
+                    console.log('Speech started:', text);
+                    const badge = document.getElementById('speakingBadge');
+                    if (badge) badge.style.display = 'inline';
+                };
+                
+                utterance.onend = function() {
+                    console.log('Speech ended');
+                    const badge = document.getElementById('speakingBadge');
+                    if (badge) badge.style.display = 'none';
+                };
+                
+                utterance.onerror = function(event) {
+                    console.error('Speech error:', event.error);
+                };
+                
+                console.log('Starting speech synthesis:', text);
+                speechSynthesis.speak(utterance);
+            } else {
+                console.log('Speech synthesis not supported');
+            }
+        }
+        
+        // Repeat speech button
+        document.getElementById('repeatSpeech').addEventListener('click', function() {
+            if (currentSpeechText) {
+                speakText(currentSpeechText);
+            }
+        });
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
