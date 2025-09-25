@@ -155,6 +155,216 @@
                 </div>
             </div>
             
+            <!-- Network Components -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">🌐 Network Components</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Physical Layer Components</h6>
+                            <div class="component-item mb-3">
+                                <strong>🔌 Hub (Legacy)</strong>
+                                <ul class="small">
+                                    <li>Single collision domain</li>
+                                    <li>Half-duplex communication</li>
+                                    <li>Broadcasts to all ports</li>
+                                    <li>Security risk: All traffic visible</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="component-item mb-3">
+                                <strong>🔄 Switch</strong>
+                                <ul class="small">
+                                    <li>Separate collision domains per port</li>
+                                    <li>Full-duplex communication</li>
+                                    <li>MAC address learning and forwarding</li>
+                                    <li>VLAN support for segmentation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="component-item mb-3">
+                                <strong>📡 Router</strong>
+                                <ul class="small">
+                                    <li>Layer 3 (Network) routing</li>
+                                    <li>Separate broadcast domains</li>
+                                    <li>Path determination and forwarding</li>
+                                    <li>Access Control Lists (ACLs)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6>Security Components</h6>
+                            <div class="component-item mb-3">
+                                <strong>🚪 Firewall</strong>
+                                <ul class="small">
+                                    <li>Packet filtering based on rules</li>
+                                    <li>Stateful inspection capabilities</li>
+                                    <li>Application layer filtering</li>
+                                    <li>Network Address Translation (NAT)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="component-item mb-3">
+                                <strong>🔍 IDS/IPS</strong>
+                                <ul class="small">
+                                    <li>Intrusion Detection/Prevention</li>
+                                    <li>Signature and anomaly-based detection</li>
+                                    <li>Network and host-based deployment</li>
+                                    <li>Real-time threat response</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="component-item mb-3">
+                                <strong>🌉 Load Balancer</strong>
+                                <ul class="small">
+                                    <li>Distributes traffic across servers</li>
+                                    <li>Health checking and failover</li>
+                                    <li>SSL termination capabilities</li>
+                                    <li>Application delivery optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Network Topologies -->
+            <div class="card mt-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">🕸️ Network Topologies</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="topology-item mb-4">
+                                <h6 class="text-primary">Bus Topology</h6>
+                                <div class="topology-visual bg-light p-3 mb-2 text-center">
+                                    <code>PC1 ---- PC2 ---- PC3 ---- PC4</code>
+                                </div>
+                                <ul class="small">
+                                    <li><strong>Pros:</strong> Simple, cost-effective</li>
+                                    <li><strong>Cons:</strong> Single point of failure, collision issues</li>
+                                    <li><strong>Use case:</strong> Legacy Ethernet (10Base2)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="topology-item mb-4">
+                                <h6 class="text-primary">Star Topology</h6>
+                                <div class="topology-visual bg-light p-3 mb-2 text-center">
+                                    <code>PC1 \<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<br>&nbsp;&nbsp;&nbsp;HUB/SWITCH<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<br>PC2 /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PC3</code>
+                                </div>
+                                <ul class="small">
+                                    <li><strong>Pros:</strong> Centralized management, fault isolation</li>
+                                    <li><strong>Cons:</strong> Central device is single point of failure</li>
+                                    <li><strong>Use case:</strong> Most common LAN topology</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="topology-item mb-4">
+                                <h6 class="text-primary">Ring Topology</h6>
+                                <div class="topology-visual bg-light p-3 mb-2 text-center">
+                                    <code>PC1 -- PC2<br>&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>PC4 -- PC3</code>
+                                </div>
+                                <ul class="small">
+                                    <li><strong>Pros:</strong> Equal access, predictable performance</li>
+                                    <li><strong>Cons:</strong> Break in ring affects all nodes</li>
+                                    <li><strong>Use case:</strong> Token Ring, FDDI networks</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="topology-item mb-4">
+                                <h6 class="text-success">Mesh Topology</h6>
+                                <div class="topology-visual bg-light p-3 mb-2 text-center">
+                                    <code>PC1 ---- PC2<br>&nbsp;|\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|<br>&nbsp;|&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;|<br>&nbsp;|&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;|<br>PC4 ---- PC3</code>
+                                </div>
+                                <div class="mesh-types">
+                                    <strong>Full Mesh:</strong>
+                                    <ul class="small">
+                                        <li>Every node connects to every other node</li>
+                                        <li>Maximum redundancy and fault tolerance</li>
+                                        <li>Formula: n(n-1)/2 connections for n nodes</li>
+                                        <li>Expensive but highly reliable</li>
+                                    </ul>
+                                    
+                                    <strong>Partial Mesh:</strong>
+                                    <ul class="small">
+                                        <li>Some nodes have multiple connections</li>
+                                        <li>Balance between cost and redundancy</li>
+                                        <li>Strategic placement of redundant links</li>
+                                        <li>Common in WAN implementations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="topology-item mb-4">
+                                <h6 class="text-warning">Hybrid Topology</h6>
+                                <ul class="small">
+                                    <li>Combination of multiple topologies</li>
+                                    <li>Star-bus, star-ring combinations</li>
+                                    <li>Scalable and flexible design</li>
+                                    <li>Most enterprise networks use hybrid</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6>Network Types by Scope</h6>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>PAN (Personal)</strong>
+                                <ul class="small">
+                                    <li>Range: 1-10 meters</li>
+                                    <li>Bluetooth, USB</li>
+                                    <li>Personal devices</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>LAN (Local)</strong>
+                                <ul class="small">
+                                    <li>Range: Building/campus</li>
+                                    <li>Ethernet, Wi-Fi</li>
+                                    <li>High speed, low latency</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>MAN (Metropolitan)</strong>
+                                <ul class="small">
+                                    <li>Range: City-wide</li>
+                                    <li>Fiber optic, microwave</li>
+                                    <li>ISP backbone networks</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>WAN (Wide Area)</strong>
+                                <ul class="small">
+                                    <li>Range: Global</li>
+                                    <li>Internet, MPLS, satellite</li>
+                                    <li>Lower speed, higher latency</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="alert alert-info">
+                            <strong>CISSP Security Considerations:</strong>
+                            <ul class="small mb-0">
+                                <li><strong>Mesh networks:</strong> Provide redundancy but increase attack surface</li>
+                                <li><strong>Star topology:</strong> Easier to secure with centralized control</li>
+                                <li><strong>Network segmentation:</strong> Use VLANs and subnets to limit broadcast domains</li>
+                                <li><strong>Single points of failure:</strong> Identify and mitigate in network design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Communication and Network Security" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>

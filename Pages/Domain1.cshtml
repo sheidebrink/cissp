@@ -329,6 +329,129 @@
                 </div>
             </div>
             
+            <!-- STRIDE Threat Model -->
+            <div class="card mt-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">🎯 STRIDE Threat Model</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">STRIDE is a threat modeling methodology developed by Microsoft to identify security threats.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="stride-item mb-3 p-3 border-start border-danger border-3">
+                                <h6 class="text-danger">S - Spoofing</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Impersonating another user or system</p>
+                                <p class="small mb-1"><strong>Examples:</strong> IP spoofing, email spoofing, identity theft</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Authentication, digital certificates</p>
+                            </div>
+                            
+                            <div class="stride-item mb-3 p-3 border-start border-warning border-3">
+                                <h6 class="text-warning">T - Tampering</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Unauthorized modification of data or code</p>
+                                <p class="small mb-1"><strong>Examples:</strong> Data corruption, code injection, file modification</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Digital signatures, integrity checks</p>
+                            </div>
+                            
+                            <div class="stride-item mb-3 p-3 border-start border-info border-3">
+                                <h6 class="text-info">R - Repudiation</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Denying actions or transactions</p>
+                                <p class="small mb-1"><strong>Examples:</strong> Denying sent emails, disputed transactions</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Digital signatures, audit logs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="stride-item mb-3 p-3 border-start border-primary border-3">
+                                <h6 class="text-primary">I - Information Disclosure</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Unauthorized access to confidential data</p>
+                                <p class="small mb-1"><strong>Examples:</strong> Data breaches, eavesdropping, information leakage</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Encryption, access controls</p>
+                            </div>
+                            
+                            <div class="stride-item mb-3 p-3 border-start border-secondary border-3">
+                                <h6 class="text-secondary">D - Denial of Service</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Making systems or services unavailable</p>
+                                <p class="small mb-1"><strong>Examples:</strong> DDoS attacks, resource exhaustion</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Rate limiting, redundancy</p>
+                            </div>
+                            
+                            <div class="stride-item mb-3 p-3 border-start border-success border-3">
+                                <h6 class="text-success">E - Elevation of Privilege</h6>
+                                <p class="small mb-1"><strong>Definition:</strong> Gaining unauthorized higher-level access</p>
+                                <p class="small mb-1"><strong>Examples:</strong> Privilege escalation, admin account compromise</p>
+                                <p class="small text-muted"><strong>Countermeasures:</strong> Least privilege, access reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <strong>CISSP Exam Tip:</strong> Remember STRIDE as a systematic approach to identify threats during security architecture design.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Risk Management Maturity (RMM) Levels -->
+            <div class="card mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📈 Risk Management Maturity (RMM) Levels</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">RMM provides a framework for assessing an organization's risk management capabilities.</p>
+                    
+                    <div class="rmm-levels">
+                        <div class="rmm-level mb-3 p-3 bg-light border">
+                            <h6 class="text-danger">Level 1 - Ad Hoc</h6>
+                            <ul class="small">
+                                <li>Chaotic starting point with no formal processes</li>
+                                <li>Risk management is reactive and inconsistent</li>
+                                <li>No standardized approach across organization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rmm-level mb-3 p-3 bg-light border">
+                            <h6 class="text-warning">Level 2 - Preliminary</h6>
+                            <ul class="small">
+                                <li>Loose attempts to follow risk management processes</li>
+                                <li>Each department may perform risk assessment uniquely</li>
+                                <li>Some documentation but inconsistent application</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rmm-level mb-3 p-3 bg-light border">
+                            <h6 class="text-primary">Level 3 - Defined</h6>
+                            <ul class="small">
+                                <li><strong>Common or standardized risk framework adopted organization-wide</strong></li>
+                                <li>Documented processes and procedures</li>
+                                <li>Consistent risk assessment methodologies</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rmm-level mb-3 p-3 bg-light border">
+                            <h6 class="text-success">Level 4 - Integrated</h6>
+                            <ul class="small">
+                                <li>Risk management operations integrated into business processes</li>
+                                <li>Metrics used to gather effectiveness data</li>
+                                <li>Risk considered an element in business strategy decisions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="rmm-level mb-3 p-3 bg-light border">
+                            <h6 class="text-info">Level 5 - Optimized</h6>
+                            <ul class="small">
+                                <li>Risk management focuses on achieving objectives rather than just reacting</li>
+                                <li>Strategic planning toward business success rather than just avoiding incidents</li>
+                                <li>Lessons learned reintegrated into the risk management process</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning mt-3">
+                        <strong>CISSP Exam Focus:</strong> Level 3 (Defined) requires a common/standardized risk framework organization-wide.
+                    </div>
+                </div>
+            </div>
+            
             <div class="mt-4">
                 <a href="/Quiz?domain=Security and Risk Management" class="btn btn-primary">Practice Domain Questions</a>
                 <a href="/Quiz" class="btn btn-outline-primary">All Questions</a>
