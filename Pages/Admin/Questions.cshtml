@@ -1,0 +1,149 @@
+@page
+@model CisspTrainingApp.Pages.Admin.QuestionsModel
+@{
+    ViewData["Title"] = "Question Admin";
+}
+
+<div class="container mt-4">
+    <h1>Question Administration</h1>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Add New Question</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-page-handler="Add">
+                <div class="mb-3">
+                    <label asp-for="NewQuestion.Text" class="form-label">Question Text</label>
+                    <textarea asp-for="NewQuestion.Text" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="NewQuestion.Domain" class="form-label">Domain</label>
+                    <select asp-for="NewQuestion.Domain" class="form-select" required>
+                        <option value="">Select Domain</option>
+                        <option value="Security and Risk Management">Security and Risk Management</option>
+                        <option value="Asset Security">Asset Security</option>
+                        <option value="Security Architecture and Engineering">Security Architecture and Engineering</option>
+                        <option value="Communication and Network Security">Communication and Network Security</option>
+                        <option value="Identity and Access Management">Identity and Access Management</option>
+                        <option value="Security Assessment and Testing">Security Assessment and Testing</option>
+                        <option value="Security Operations">Security Operations</option>
+                        <option value="Software Development Security">Software Development Security</option>
+                    </select>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Option A</label>
+                        <input name="NewQuestion.Options[0]" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Option B</label>
+                        <input name="NewQuestion.Options[1]" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Option C</label>
+                        <input name="NewQuestion.Options[2]" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Option D</label>
+                        <input name="NewQuestion.Options[3]" class="form-control" required />
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="NewQuestion.CorrectAnswerIndex" class="form-label">Correct Answer</label>
+                    <select asp-for="NewQuestion.CorrectAnswerIndex" class="form-select" required>
+                        <option value="">Select Correct Answer</option>
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label asp-for="NewQuestion.Explanation" class="form-label">Explanation</label>
+                    <textarea asp-for="NewQuestion.Explanation" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Add Question</button>
+                <button type="button" class="btn btn-outline-info ms-2" id="generate-question">Generate with AWS Nova</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>Existing Questions (@Model.Questions.Count)</h5>
+        </div>
+        <div class="card-body">
+            @foreach (var question in Model.Questions)
+            {
+                <div class="border p-3 mb-3">
+                    <h6>Question @question.Id</h6>
+                    <p><strong>@question.Text</strong></p>
+                    <p><small class="text-muted">Domain: @question.Domain</small></p>
+                    <ul>
+                        @for (int i = 0; i < question.Options.Count; i++)
+                        {
+                            <li class="@(i == question.CorrectAnswerIndex ? "text-success fw-bold" : "")">
+                                @question.Options[i]
+                            </li>
+                        }
+                    </ul>
+                    <p><strong>Explanation:</strong> @question.Explanation</p>
+                    <form method="post" asp-page-handler="Delete" class="d-inline">
+                        <input type="hidden" name="id" value="@question.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Delete this question?')">Delete</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a href="/Admin" class="btn btn-secondary">Back to Admin</a>
+    </div>
+</div>
+
+<script>
+document.getElementById('generate-question').addEventListener('click', async function() {
+    const button = this;
+    const originalText = button.textContent;
+    button.textContent = 'Generating...';
+    button.disabled = true;
+    
+    try {
+        const formData = new FormData();
+        formData.append('__RequestVerificationToken', document.querySelector('input[name="__RequestVerificationToken"]').value);
+        
+        const response = await fetch('/Admin/Questions?handler=GenerateQuestion', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const question = await response.json();
+            
+            document.querySelector('textarea[name="NewQuestion.Text"]').value = question.text;
+            document.querySelector('select[name="NewQuestion.Domain"]').value = question.domain;
+            document.querySelector('input[name="NewQuestion.Options[0]"]').value = question.options[0];
+            document.querySelector('input[name="NewQuestion.Options[1]"]').value = question.options[1];
+            document.querySelector('input[name="NewQuestion.Options[2]"]').value = question.options[2];
+            document.querySelector('input[name="NewQuestion.Options[3]"]').value = question.options[3];
+            document.querySelector('select[name="NewQuestion.CorrectAnswerIndex"]').value = question.correctAnswerIndex;
+            document.querySelector('textarea[name="NewQuestion.Explanation"]').value = question.explanation;
+        } else {
+            const errorText = await response.text();
+            alert('Failed to generate question: ' + errorText);
+        }
+    } catch (error) {
+        alert('Error generating question: ' + error.message);
+    } finally {
+        button.textContent = originalText;
+        button.disabled = false;
+    }
+});
+</script>

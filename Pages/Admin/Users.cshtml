@@ -1,0 +1,73 @@
+@page
+@model CisspTrainingApp.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "User Admin";
+}
+
+<div class="container mt-4">
+    <h1>User Management</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>User Management (@Model.Users.Count users)</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-page-handler="Search" class="mb-3">
+                <div class="input-group">
+                    <input asp-for="SearchTerm" class="form-control" placeholder="Search by email or username..." />
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </form>
+            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.UserName</td>
+                                <td>
+                                    @if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.Now)
+                                    {
+                                        <span class="badge bg-danger">Disabled</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                </td>
+                                <td>
+                                    <form method="post" asp-page-handler="ToggleUser" class="d-inline">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                        @if (user.LockoutEnd.HasValue && user.LockoutEnd > DateTimeOffset.Now)
+                                        {
+                                            <button type="submit" class="btn btn-success btn-sm">Enable</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Disable this user?')">Disable</button>
+                                        }
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a href="/Admin" class="btn btn-secondary">Back to Admin</a>
+    </div>
+</div>
