@@ -1,0 +1,84 @@
+@page
+@model QuizModel
+@{
+    ViewData["Title"] = "CISSP Quiz";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                @if (Model.CurrentQuestionIndex < Model.Questions.Count)
+                {
+                    <div class="card-header">
+                        <h4>Question @(Model.CurrentQuestionIndex + 1) of @Model.Questions.Count</h4>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: @(((double)(Model.CurrentQuestionIndex + 1) / Model.Questions.Count) * 100)%"></div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-header">
+                        <h4>Quiz Results</h4>
+                    </div>
+                }
+                <div class="card-body">
+                    @if (Model.CurrentQuestionIndex < Model.Questions.Count)
+                    {
+                        var question = Model.Questions[Model.CurrentQuestionIndex];
+                        <h5 class="card-title">@question.Text</h5>
+                        <p class="text-muted">Domain: @question.Domain</p>
+                        
+                        <form method="post" asp-page-handler="">
+                            <input type="hidden" name="CurrentQuestionIndex" value="@Model.CurrentQuestionIndex" />
+                            @for (int i = 0; i < question.Options.Count; i++)
+                            {
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="SelectedAnswer" value="@i" id="option@i">
+                                    <label class="form-check-label" for="option@i">
+                                        @question.Options[i]
+                                    </label>
+                                </div>
+                            }
+                            <button type="submit" class="btn btn-primary mt-3">Submit Answer</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <h3>Quiz Complete!</h3>
+                        <p>Your Score: @Model.Score out of @Model.Questions.Count (@(Math.Round((double)Model.Score / Model.Questions.Count * 100, 1))%)</p>
+                        <a href="/Quiz" class="btn btn-success">Take Another Quiz</a>
+                        <a href="/" class="btn btn-secondary">Home</a>
+                    }
+                </div>
+            </div>
+            
+            @if (Model.ShowAnswer && Model.CurrentQuestionIndex < Model.Questions.Count)
+            {
+                var question = Model.Questions[Model.CurrentQuestionIndex];
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            @if (Model.LastAnswerCorrect)
+                            {
+                                <span class="text-success">✓ Correct!</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">✗ Incorrect</span>
+                            }
+                        </h6>
+                        <p><strong>Correct Answer:</strong> @question.Options[question.CorrectAnswerIndex]</p>
+                        <p><strong>Explanation:</strong> @question.Explanation</p>
+                        <form method="post" asp-page-handler="Next">
+                            <input type="hidden" name="CurrentQuestionIndex" value="@(Model.CurrentQuestionIndex + 1)" />
+                            <input type="hidden" name="Score" value="@Model.Score" />
+                            <button type="submit" class="btn btn-primary">Next Question</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
