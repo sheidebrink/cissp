@@ -94,3 +94,4 @@ C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\refint\Ciss
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.pdb
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.genruntimeconfig.cache
 C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\ref\CisspTrainingApp.dll
+C:\Users\sheidebr\CisspTrainingApp\CisspTrainingApp\obj\Debug\net9.0\CisspTrainingApp.sourcelink.json
