@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G8dq4eUfpA4=",
+  "dgSpecHash": "+8ZJkiyidU8=",
   "success": true,
-  "projectFilePath": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
+  "projectFilePath": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sheidebr\\.nuget\\packages\\awssdk.bedrockruntime\\3.7.401\\awssdk.bedrockruntime.3.7.401.nupkg.sha512",
     "C:\\Users\\sheidebr\\.nuget\\packages\\awssdk.core\\3.7.400\\awssdk.core.3.7.400.nupkg.sha512",
@@ -155,9 +155,9 @@
       "code": "NU1603",
       "level": "Warning",
       "message": "CisspTrainingApp depends on AWSSDK.BedrockRuntime (>= 3.7.400.45) but AWSSDK.BedrockRuntime 3.7.400.45 was not found. AWSSDK.BedrockRuntime 3.7.401 was resolved instead.",
-      "projectPath": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
+      "projectPath": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
       "warningLevel": 1,
-      "filePath": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
+      "filePath": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
       "libraryId": "AWSSDK.BedrockRuntime",
       "targetGraphs": [
         "net9.0"
