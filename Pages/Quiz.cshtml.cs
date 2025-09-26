@@ -24,6 +24,8 @@ namespace CisspTrainingApp.Pages
         {
             Questions = _questionService.GetRandomQuestions(3, domain);
             HttpContext.Session.SetString("Questions", System.Text.Json.JsonSerializer.Serialize(Questions));
+            HttpContext.Session.SetString("Score", "0");
+            Score = 0;
             
             if (!string.IsNullOrEmpty(domain))
             {
@@ -40,6 +42,7 @@ namespace CisspTrainingApp.Pages
             }
 
             CurrentQuestionIndex = currentQuestionIndex;
+            Score = int.Parse(HttpContext.Session.GetString("Score") ?? "0");
             
             if (CurrentQuestionIndex < Questions.Count)
             {
@@ -48,14 +51,10 @@ namespace CisspTrainingApp.Pages
                 
                 if (LastAnswerCorrect)
                 {
-                    Score = int.Parse(HttpContext.Session.GetString("Score") ?? "0") + 1;
-                    HttpContext.Session.SetString("Score", Score.ToString());
-                }
-                else
-                {
-                    Score = int.Parse(HttpContext.Session.GetString("Score") ?? "0");
+                    Score++;
                 }
 
+                HttpContext.Session.SetString("Score", Score.ToString());
                 ShowAnswer = true;
             }
 
@@ -71,10 +70,8 @@ namespace CisspTrainingApp.Pages
             }
 
             CurrentQuestionIndex = currentQuestionIndex;
-            Score = score;
+            Score = int.Parse(HttpContext.Session.GetString("Score") ?? "0");
             ShowAnswer = false;
-            
-            HttpContext.Session.SetString("Score", Score.ToString());
 
             return Page();
         }
