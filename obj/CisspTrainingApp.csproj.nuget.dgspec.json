@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj": {}
+    "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj": {
+    "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
+        "projectUniqueName": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
         "projectName": "CisspTrainingApp",
-        "projectPath": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
+        "projectPath": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\CisspTrainingApp.csproj",
         "packagesPath": "C:\\Users\\sheidebr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\obj\\",
+        "outputPath": "c:\\Users\\sheidebr\\CisspTrainingApp\\CisspTrainingApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
