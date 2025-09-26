@@ -10,5 +10,7 @@ namespace CisspTrainingApp.Data
             : base(options)
         {
         }
+        
+        public DbSet<PageVisit> PageVisits { get; set; }
     }
 }

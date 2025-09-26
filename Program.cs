@@ -47,6 +47,7 @@ builder.Services.AddRazorPages(options => {
 });
 
 builder.Services.AddSession();
+builder.Services.AddControllers();
 builder.Services.AddSingleton<QuestionService>();
 builder.Services.AddSingleton<NovaService>();
 
@@ -71,6 +72,7 @@ app.UseSession();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
+app.MapControllers();
 
 // Ensure database is created
 using (var scope = app.Services.CreateScope())

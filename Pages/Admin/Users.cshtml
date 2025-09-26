@@ -81,6 +81,7 @@
                                             <button type="submit" class="btn btn-success btn-sm">Mark Passed</button>
                                         }
                                     </form>
+                                    <button class="btn btn-info btn-sm ms-1" onclick="showPageVisits('@user.Id', '@user.Email')">View Activity</button>
                                 </td>
                             </tr>
                         }
@@ -94,3 +95,90 @@
         <a href="/Admin" class="btn btn-secondary">Back to Admin</a>
     </div>
 </div>
+
+<!-- Page Visits Modal -->
+<div class="modal fade" id="pageVisitsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Page Activity</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="pageVisitsContent">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showPageVisits(userId, userEmail) {
+    const modal = new bootstrap.Modal(document.getElementById('pageVisitsModal'));
+    const content = document.getElementById('pageVisitsContent');
+    
+    content.innerHTML = `
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Loading activity for ${userEmail}...</p>
+        </div>
+    `;
+    
+    modal.show();
+    
+    fetch(`/api/pagevisit/user/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                content.innerHTML = '<p class="text-muted">No page activity recorded for this user.</p>';
+                return;
+            }
+            
+            const totalTime = data.reduce((sum, visit) => sum + visit.timeSpentSeconds, 0);
+            const totalMinutes = Math.floor(totalTime / 60);
+            const totalHours = Math.floor(totalMinutes / 60);
+            
+            let html = `
+                <div class="alert alert-info">
+                    <strong>Total Study Time:</strong> ${totalHours}h ${totalMinutes % 60}m ${totalTime % 60}s
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Page</th>
+                                <th>Date</th>
+                                <th>Time Spent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            data.forEach(visit => {
+                const date = new Date(visit.startTime).toLocaleDateString();
+                const time = new Date(visit.startTime).toLocaleTimeString();
+                const minutes = Math.floor(visit.timeSpentSeconds / 60);
+                const seconds = visit.timeSpentSeconds % 60;
+                
+                html += `
+                    <tr>
+                        <td>${visit.pageName}</td>
+                        <td>${date} ${time}</td>
+                        <td>${minutes}m ${seconds}s</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table></div>';
+            content.innerHTML = html;
+        })
+        .catch(error => {
+            content.innerHTML = '<p class="text-danger">Error loading page activity.</p>';
+        });
+}
+</script>

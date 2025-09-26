@@ -129,6 +129,36 @@
     <script>
         console.log('Script loading...');
         
+        // Page time tracking
+        let pageStartTime = Date.now();
+        let pageName = '@ViewData["Title"]' || window.location.pathname;
+        
+        function trackPageTime() {
+            if (!pageName || pageName === 'undefined') return;
+            
+            const timeSpent = Math.floor((Date.now() - pageStartTime) / 1000);
+            if (timeSpent < 5) return; // Only track if spent more than 5 seconds
+            
+            fetch('/api/pagevisit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                },
+                body: JSON.stringify({
+                    pageName: pageName,
+                    timeSpentSeconds: timeSpent
+                })
+            }).catch(err => console.log('Page tracking error:', err));
+        }
+        
+        // Track when leaving page
+        window.addEventListener('beforeunload', trackPageTime);
+        window.addEventListener('pagehide', trackPageTime);
+        
+        // Track every 30 seconds for long sessions
+        setInterval(trackPageTime, 30000);
+        
         document.getElementById('theme-toggle').addEventListener('click', function() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-bs-theme');
