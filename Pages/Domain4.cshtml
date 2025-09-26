@@ -155,6 +155,506 @@
                 </div>
             </div>
             
+            <!-- Email Security -->
+            <div class="card mt-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">📧 Email Security</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">Email Protocols & Security</h6>
+                            <div class="border-start border-primary border-3 ps-3 mb-3">
+                                <p><strong>SMTP (Simple Mail Transfer Protocol)</strong></p>
+                                <ul class="small">
+                                    <li>Port 25 (unencrypted), 587 (STARTTLS), 465 (SSL/TLS)</li>
+                                    <li>Used for sending emails between servers</li>
+                                    <li>No built-in authentication or encryption</li>
+                                </ul>
+                                
+                                <p><strong>POP3 (Post Office Protocol v3)</strong></p>
+                                <ul class="small">
+                                    <li>Port 110 (unencrypted), 995 (SSL/TLS)</li>
+                                    <li>Downloads emails to local device</li>
+                                    <li>Emails deleted from server after download</li>
+                                </ul>
+                                
+                                <p><strong>IMAP (Internet Message Access Protocol)</strong></p>
+                                <ul class="small">
+                                    <li>Port 143 (unencrypted), 993 (SSL/TLS)</li>
+                                    <li>Emails remain on server</li>
+                                    <li>Supports multiple device synchronization</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-success">Email Authentication</h6>
+                            <div class="border-start border-success border-3 ps-3 mb-3">
+                                <p><strong>SPF (Sender Policy Framework)</strong></p>
+                                <ul class="small">
+                                    <li>DNS TXT record specifying authorized sending IPs</li>
+                                    <li>Prevents email spoofing</li>
+                                    <li>Example: "v=spf1 include:_spf.google.com ~all"</li>
+                                </ul>
+                                
+                                <p><strong>DKIM (DomainKeys Identified Mail)</strong></p>
+                                <ul class="small">
+                                    <li>Cryptographic signature in email headers</li>
+                                    <li>Verifies email hasn't been tampered with</li>
+                                    <li>Uses public/private key pairs</li>
+                                </ul>
+                                
+                                <p><strong>DMARC (Domain-based Message Authentication)</strong></p>
+                                <ul class="small">
+                                    <li>Policy framework using SPF and DKIM</li>
+                                    <li>Specifies actions for failed authentication</li>
+                                    <li>Provides reporting on email authentication</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Email Threats</h6>
+                            <div class="border-start border-danger border-3 ps-3 mb-3">
+                                <ul class="small">
+                                    <li><strong>Phishing:</strong> Fraudulent emails to steal credentials</li>
+                                    <li><strong>Spear Phishing:</strong> Targeted phishing attacks</li>
+                                    <li><strong>Whaling:</strong> Phishing targeting executives</li>
+                                    <li><strong>Business Email Compromise (BEC):</strong> CEO fraud</li>
+                                    <li><strong>Email Spoofing:</strong> Forging sender addresses</li>
+                                    <li><strong>Malware Attachments:</strong> Infected files</li>
+                                    <li><strong>Spam:</strong> Unsolicited bulk email</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-info">Email Security Controls</h6>
+                            <div class="border-start border-info border-3 ps-3 mb-3">
+                                <ul class="small">
+                                    <li><strong>Email Gateways:</strong> Filter incoming/outgoing mail</li>
+                                    <li><strong>Anti-Spam Filters:</strong> Block unwanted emails</li>
+                                    <li><strong>Anti-Malware Scanning:</strong> Detect malicious attachments</li>
+                                    <li><strong>Data Loss Prevention (DLP):</strong> Prevent data leakage</li>
+                                    <li><strong>Email Encryption:</strong> S/MIME, PGP protection</li>
+                                    <li><strong>Sandboxing:</strong> Analyze attachments safely</li>
+                                    <li><strong>User Training:</strong> Security awareness programs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <h6><strong>📝 CISSP Exam Tips:</strong></h6>
+                        <ul class="small mb-0">
+                            <li>Remember the port numbers: SMTP (25/587/465), POP3 (110/995), IMAP (143/993)</li>
+                            <li>SPF, DKIM, and DMARC work together for email authentication</li>
+                            <li>Business Email Compromise (BEC) is a major threat to organizations</li>
+                            <li>Email encryption can be at transport level (TLS) or message level (S/MIME/PGP)</li>
+                            <li>Defense in depth: multiple layers of email security controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wireless Security -->
+            <div class="card mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">📶 Wireless Security (WEP/WPA)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-danger">WEP (Wired Equivalent Privacy)</h6>
+                            <div class="border-start border-danger border-3 ps-3 mb-3">
+                                <p><strong>Overview:</strong> Original 802.11 security protocol (1997)</p>
+                                <ul class="small">
+                                    <li><strong>Key Length:</strong> 64-bit or 128-bit (actually 40-bit and 104-bit)</li>
+                                    <li><strong>Encryption:</strong> RC4 stream cipher</li>
+                                    <li><strong>Authentication:</strong> Open System or Shared Key</li>
+                                    <li><strong>IV (Initialization Vector):</strong> 24-bit, transmitted in plaintext</li>
+                                </ul>
+                                
+                                <p><strong class="text-danger">Major Vulnerabilities:</strong></p>
+                                <ul class="small">
+                                    <li><strong>Weak IV:</strong> Only 24-bit, causes key reuse</li>
+                                    <li><strong>Static Keys:</strong> Same key for all users</li>
+                                    <li><strong>No Key Management:</strong> Manual key distribution</li>
+                                    <li><strong>CRC-32 Integrity:</strong> Easily manipulated</li>
+                                    <li><strong>Crackable:</strong> Can be broken in minutes</li>
+                                </ul>
+                                
+                                <div class="alert alert-danger small">
+                                    <strong>Status:</strong> Deprecated and insecure. Should never be used.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-success">WPA Evolution</h6>
+                            <div class="border-start border-success border-3 ps-3 mb-3">
+                                <p><strong>WPA (Wi-Fi Protected Access)</strong> - 2003</p>
+                                <ul class="small">
+                                    <li><strong>Encryption:</strong> TKIP (Temporal Key Integrity Protocol)</li>
+                                    <li><strong>Key Management:</strong> Dynamic key generation</li>
+                                    <li><strong>Authentication:</strong> 802.1X or PSK (Pre-Shared Key)</li>
+                                    <li><strong>Integrity:</strong> Michael MIC (Message Integrity Check)</li>
+                                </ul>
+                                
+                                <p><strong>WPA2 (802.11i)</strong> - 2004</p>
+                                <ul class="small">
+                                    <li><strong>Encryption:</strong> AES-CCMP (Counter Mode CBC-MAC)</li>
+                                    <li><strong>Key Length:</strong> 128-bit AES</li>
+                                    <li><strong>Authentication:</strong> 802.1X (Enterprise) or PSK (Personal)</li>
+                                    <li><strong>Integrity:</strong> Built into CCMP</li>
+                                </ul>
+                                
+                                <p><strong>WPA3</strong> - 2018</p>
+                                <ul class="small">
+                                    <li><strong>Encryption:</strong> AES-256 (Enterprise), AES-128 (Personal)</li>
+                                    <li><strong>Key Exchange:</strong> SAE (Simultaneous Authentication of Equals)</li>
+                                    <li><strong>Forward Secrecy:</strong> Protection against key compromise</li>
+                                    <li><strong>Enhanced Open:</strong> Opportunistic Wireless Encryption (OWE)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">WPA/WPA2 Authentication Modes</h6>
+                            <div class="border-start border-primary border-3 ps-3 mb-3">
+                                <p><strong>Personal Mode (PSK)</strong></p>
+                                <ul class="small">
+                                    <li>Pre-Shared Key authentication</li>
+                                    <li>Same passphrase for all users</li>
+                                    <li>Suitable for home/small office</li>
+                                    <li>No centralized authentication server</li>
+                                </ul>
+                                
+                                <p><strong>Enterprise Mode (802.1X)</strong></p>
+                                <ul class="small">
+                                    <li>RADIUS authentication server</li>
+                                    <li>Individual user credentials</li>
+                                    <li>EAP (Extensible Authentication Protocol)</li>
+                                    <li>Dynamic key generation per session</li>
+                                </ul>
+                                
+                                <p><strong>Common EAP Methods:</strong></p>
+                                <ul class="small">
+                                    <li><strong>EAP-TLS:</strong> Certificate-based, most secure</li>
+                                    <li><strong>EAP-TTLS:</strong> Tunneled TLS with inner authentication</li>
+                                    <li><strong>PEAP:</strong> Protected EAP with TLS tunnel</li>
+                                    <li><strong>EAP-FAST:</strong> Flexible Authentication via Secure Tunneling</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Wireless Security Best Practices</h6>
+                            <div class="border-start border-warning border-3 ps-3 mb-3">
+                                <p><strong>Configuration Security:</strong></p>
+                                <ul class="small">
+                                    <li>Use WPA3 or WPA2 (never WEP)</li>
+                                    <li>Strong passphrases (20+ characters)</li>
+                                    <li>Disable WPS (Wi-Fi Protected Setup)</li>
+                                    <li>Change default admin credentials</li>
+                                    <li>Regular firmware updates</li>
+                                </ul>
+                                
+                                <p><strong>Network Architecture:</strong></p>
+                                <ul class="small">
+                                    <li>Guest network isolation</li>
+                                    <li>VLAN segmentation</li>
+                                    <li>MAC address filtering (limited security)</li>
+                                    <li>Disable SSID broadcast (security by obscurity)</li>
+                                    <li>Reduce transmission power</li>
+                                </ul>
+                                
+                                <p><strong>Monitoring & Detection:</strong></p>
+                                <ul class="small">
+                                    <li>Wireless IDS/IPS deployment</li>
+                                    <li>Rogue access point detection</li>
+                                    <li>Regular security assessments</li>
+                                    <li>Site surveys and coverage analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h6><strong>📝 CISSP Exam Tips:</strong></h6>
+                        <ul class="small mb-0">
+                            <li><strong>WEP is broken:</strong> 24-bit IV, RC4 vulnerabilities, static keys</li>
+                            <li><strong>WPA improvements:</strong> TKIP, dynamic keys, Michael MIC</li>
+                            <li><strong>WPA2 standard:</strong> AES-CCMP encryption, 802.11i specification</li>
+                            <li><strong>Enterprise vs Personal:</strong> 802.1X/RADIUS vs PSK authentication</li>
+                            <li><strong>EAP-TLS most secure:</strong> Mutual certificate authentication</li>
+                            <li><strong>WPA3 features:</strong> SAE, forward secrecy, enhanced open networks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IP Addressing and Ranges -->
+            <div class="card mt-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">🔢 IP Addressing and Ranges</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">IPv4 Address Classes</h6>
+                            <div class="border-start border-primary border-3 ps-3 mb-3">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Range</th>
+                                                <th>Default Mask</th>
+                                                <th>Networks</th>
+                                                <th>Hosts/Net</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>A</strong></td>
+                                                <td>1.0.0.0 - 126.255.255.255</td>
+                                                <td>/8 (255.0.0.0)</td>
+                                                <td>126</td>
+                                                <td>16,777,214</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>B</strong></td>
+                                                <td>128.0.0.0 - 191.255.255.255</td>
+                                                <td>/16 (255.255.0.0)</td>
+                                                <td>16,384</td>
+                                                <td>65,534</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>C</strong></td>
+                                                <td>192.0.0.0 - 223.255.255.255</td>
+                                                <td>/24 (255.255.255.0)</td>
+                                                <td>2,097,152</td>
+                                                <td>254</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>D</strong></td>
+                                                <td>224.0.0.0 - 239.255.255.255</td>
+                                                <td>Multicast</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>E</strong></td>
+                                                <td>240.0.0.0 - 255.255.255.255</td>
+                                                <td>Reserved</td>
+                                                <td>-</td>
+                                                <td>-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-success">Private IP Ranges (RFC 1918)</h6>
+                            <div class="border-start border-success border-3 ps-3 mb-3">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Private Range</th>
+                                                <th>CIDR</th>
+                                                <th>Addresses</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-success">
+                                                <td><strong>A</strong></td>
+                                                <td>10.0.0.0 - 10.255.255.255</td>
+                                                <td>10.0.0.0/8</td>
+                                                <td>16,777,216</td>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <td><strong>B</strong></td>
+                                                <td>172.16.0.0 - 172.31.255.255</td>
+                                                <td>172.16.0.0/12</td>
+                                                <td>1,048,576</td>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <td><strong>C</strong></td>
+                                                <td>192.168.0.0 - 192.168.255.255</td>
+                                                <td>192.168.0.0/16</td>
+                                                <td>65,536</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <p class="small"><strong>Usage:</strong> Internal networks, not routed on Internet</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Special IP Ranges</h6>
+                            <div class="border-start border-warning border-3 ps-3 mb-3">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>127.0.0.0/8</strong></td>
+                                                <td>Loopback (localhost)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>169.254.0.0/16</strong></td>
+                                                <td>APIPA (Automatic Private IP)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>0.0.0.0/8</strong></td>
+                                                <td>"This network" (default route)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>255.255.255.255</strong></td>
+                                                <td>Limited broadcast</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>224.0.0.0/4</strong></td>
+                                                <td>Multicast (Class D)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>100.64.0.0/10</strong></td>
+                                                <td>Carrier-Grade NAT (CGN)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h6 class="text-info">CIDR Notation & Subnetting</h6>
+                            <div class="border-start border-info border-3 ps-3 mb-3">
+                                <p><strong>CIDR (Classless Inter-Domain Routing)</strong></p>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>CIDR</th>
+                                                <th>Subnet Mask</th>
+                                                <th>Hosts</th>
+                                                <th>Example</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>/8</td>
+                                                <td>255.0.0.0</td>
+                                                <td>16,777,214</td>
+                                                <td>10.0.0.0/8</td>
+                                            </tr>
+                                            <tr>
+                                                <td>/16</td>
+                                                <td>255.255.0.0</td>
+                                                <td>65,534</td>
+                                                <td>192.168.0.0/16</td>
+                                            </tr>
+                                            <tr>
+                                                <td>/24</td>
+                                                <td>255.255.255.0</td>
+                                                <td>254</td>
+                                                <td>192.168.1.0/24</td>
+                                            </tr>
+                                            <tr>
+                                                <td>/25</td>
+                                                <td>255.255.255.128</td>
+                                                <td>126</td>
+                                                <td>192.168.1.0/25</td>
+                                            </tr>
+                                            <tr>
+                                                <td>/26</td>
+                                                <td>255.255.255.192</td>
+                                                <td>62</td>
+                                                <td>192.168.1.0/26</td>
+                                            </tr>
+                                            <tr>
+                                                <td>/30</td>
+                                                <td>255.255.255.252</td>
+                                                <td>2</td>
+                                                <td>Point-to-point links</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6 class="text-dark">IPv6 Addressing</h6>
+                            <div class="border-start border-dark border-3 ps-3 mb-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>IPv6 Address Types:</strong></p>
+                                        <ul class="small">
+                                            <li><strong>Unicast:</strong> One-to-one communication</li>
+                                            <li><strong>Multicast:</strong> One-to-many communication</li>
+                                            <li><strong>Anycast:</strong> One-to-nearest communication</li>
+                                        </ul>
+                                        
+                                        <p><strong>IPv6 Special Addresses:</strong></p>
+                                        <ul class="small">
+                                            <li><strong>::1/128:</strong> Loopback address</li>
+                                            <li><strong>::/128:</strong> Unspecified address</li>
+                                            <li><strong>fe80::/10:</strong> Link-local addresses</li>
+                                            <li><strong>fc00::/7:</strong> Unique local addresses (private)</li>
+                                            <li><strong>2000::/3:</strong> Global unicast addresses</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>IPv6 Format:</strong></p>
+                                        <ul class="small">
+                                            <li>128-bit addresses (vs 32-bit IPv4)</li>
+                                            <li>8 groups of 4 hexadecimal digits</li>
+                                            <li>Example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334</li>
+                                            <li>Compressed: 2001:db8:85a3::8a2e:370:7334</li>
+                                        </ul>
+                                        
+                                        <p><strong>IPv6 Transition:</strong></p>
+                                        <ul class="small">
+                                            <li><strong>Dual Stack:</strong> Run IPv4 and IPv6 simultaneously</li>
+                                            <li><strong>Tunneling:</strong> IPv6 over IPv4 networks</li>
+                                            <li><strong>Translation:</strong> NAT64, DNS64</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h6><strong>📝 CISSP Exam Tips:</strong></h6>
+                        <ul class="small mb-0">
+                            <li><strong>Memorize private ranges:</strong> 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16</li>
+                            <li><strong>Class A starts at 1:</strong> 127.x.x.x is loopback, not Class A</li>
+                            <li><strong>APIPA range:</strong> 169.254.0.0/16 for automatic IP assignment</li>
+                            <li><strong>Subnetting formula:</strong> 2^n hosts (minus 2 for network/broadcast)</li>
+                            <li><strong>IPv6 benefits:</strong> Larger address space, built-in security, no NAT needed</li>
+                            <li><strong>Security consideration:</strong> Private IPs provide network segmentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Network Components -->
             <div class="card mt-4">
                 <div class="card-header bg-primary text-white">
