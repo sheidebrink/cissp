@@ -70,150 +70,23 @@
     </div>
     
     <div class="row mt-4">
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">📊 Domain 1</h6>
-                    <p class="card-text">Security and Risk Management</p>
-                    @{
-                        var domain1Time = Model.DomainTimes.ContainsKey("Domain 1 - Security and Risk Management") ? Model.DomainTimes["Domain 1 - Security and Risk Management"] : 0;
-                        var minutes1 = domain1Time / 60;
-                        var seconds1 = domain1Time % 60;
-                    }
-                    @if (domain1Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes1 m @seconds1 s</small><br>
-                    }
-                    <a href="/Domain1" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">💼 Domain 2</h6>
-                    <p class="card-text">Asset Security</p>
-                    @{
-                        var domain2Time = Model.DomainTimes.ContainsKey("Domain 2 - Asset Security") ? Model.DomainTimes["Domain 2 - Asset Security"] : 0;
-                        var minutes2 = domain2Time / 60;
-                        var seconds2 = domain2Time % 60;
-                    }
-                    @if (domain2Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes2 m @seconds2 s</small><br>
-                    }
-                    <a href="/Domain2" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🏢 Domain 3</h6>
-                    <p class="card-text">Security Architecture and Engineering</p>
-                    @{
-                        var domain3Time = Model.DomainTimes.ContainsKey("Domain 3 - Security Architecture and Engineering") ? Model.DomainTimes["Domain 3 - Security Architecture and Engineering"] : 0;
-                        var minutes3 = domain3Time / 60;
-                        var seconds3 = domain3Time % 60;
-                    }
-                    @if (domain3Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes3 m @seconds3 s</small><br>
-                    }
-                    <a href="/Domain3" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🌐 Domain 4</h6>
-                    <p class="card-text">Communication and Network Security</p>
-                    @{
-                        var domain4Time = Model.DomainTimes.ContainsKey("Domain 4 - Communication and Network Security") ? Model.DomainTimes["Domain 4 - Communication and Network Security"] : 0;
-                        var minutes4 = domain4Time / 60;
-                        var seconds4 = domain4Time % 60;
-                    }
-                    @if (domain4Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes4 m @seconds4 s</small><br>
-                    }
-                    <a href="/Domain4" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🔑 Domain 5</h6>
-                    <p class="card-text">Identity and Access Management</p>
-                    @{
-                        var domain5Time = Model.DomainTimes.ContainsKey("Domain 5 - Identity and Access Management") ? Model.DomainTimes["Domain 5 - Identity and Access Management"] : 0;
-                        var minutes5 = domain5Time / 60;
-                        var seconds5 = domain5Time % 60;
-                    }
-                    @if (domain5Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes5 m @seconds5 s</small><br>
-                    }
-                    <a href="/Domain5" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">🔍 Domain 6</h6>
-                    <p class="card-text">Security Assessment and Testing</p>
-                    @{
-                        var domain6Time = Model.DomainTimes.ContainsKey("Domain 6 - Security Assessment and Testing") ? Model.DomainTimes["Domain 6 - Security Assessment and Testing"] : 0;
-                        var minutes6 = domain6Time / 60;
-                        var seconds6 = domain6Time % 60;
-                    }
-                    @if (domain6Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes6 m @seconds6 s</small><br>
-                    }
-                    <a href="/Domain6" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">⚙️ Domain 7</h6>
-                    <p class="card-text">Security Operations</p>
-                    @{
-                        var domain7Time = Model.DomainTimes.ContainsKey("Domain 7 - Security Operations") ? Model.DomainTimes["Domain 7 - Security Operations"] : 0;
-                        var minutes7 = domain7Time / 60;
-                        var seconds7 = domain7Time % 60;
-                    }
-                    @if (domain7Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes7 m @seconds7 s</small><br>
-                    }
-                    <a href="/Domain7" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h6 class="card-title">💻 Domain 8</h6>
-                    <p class="card-text">Software Development Security</p>
-                    @{
-                        var domain8Time = Model.DomainTimes.ContainsKey("Domain 8 - Software Development Security") ? Model.DomainTimes["Domain 8 - Software Development Security"] : 0;
-                        var minutes8 = domain8Time / 60;
-                        var seconds8 = domain8Time % 60;
-                    }
-                    @if (domain8Time > 0)
-                    {
-                        <small class="text-muted">Study time: @minutes8 m @seconds8 s</small><br>
-                    }
-                    <a href="/Domain8" class="btn btn-outline-primary btn-sm">Learn More</a>
-                </div>
-            </div>
-        </div>
+        @{
+            var domains = new List<CisspTrainingApp.Models.DomainTileModel>
+            {
+                new() { Number = 1, Icon = "📊", Title = "Domain 1", Description = "Security and Risk Management", DomainTimes = Model.DomainTimes },
+                new() { Number = 2, Icon = "💼", Title = "Domain 2", Description = "Asset Security", DomainTimes = Model.DomainTimes },
+                new() { Number = 3, Icon = "🏢", Title = "Domain 3", Description = "Security Architecture and Engineering", DomainTimes = Model.DomainTimes },
+                new() { Number = 4, Icon = "🌐", Title = "Domain 4", Description = "Communication and Network Security", DomainTimes = Model.DomainTimes },
+                new() { Number = 5, Icon = "🔑", Title = "Domain 5", Description = "Identity and Access Management", DomainTimes = Model.DomainTimes },
+                new() { Number = 6, Icon = "🔍", Title = "Domain 6", Description = "Security Assessment and Testing", DomainTimes = Model.DomainTimes },
+                new() { Number = 7, Icon = "⚙️", Title = "Domain 7", Description = "Security Operations", DomainTimes = Model.DomainTimes },
+                new() { Number = 8, Icon = "💻", Title = "Domain 8", Description = "Software Development Security", DomainTimes = Model.DomainTimes }
+            };
+        }
+        @foreach (var domain in domains)
+        {
+            <partial name="_DomainTile" model="domain" />
+        }
     </div>
     
     <!-- Recent Security Breaches -->

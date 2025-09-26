@@ -1,0 +1,22 @@
+@model CisspTrainingApp.Models.DomainTileModel
+
+@{
+    var domainKey = $"Domain {Model.Number} - {Model.Description}";
+    var studyTime = Model.DomainTimes.ContainsKey(domainKey) ? Model.DomainTimes[domainKey] : 0;
+    var minutes = studyTime / 60;
+    var seconds = studyTime % 60;
+}
+
+<div class="col-md-6 col-lg-3 mb-3">
+    <div class="card h-100">
+        <div class="card-body">
+            <h6 class="card-title">@Model.Icon Domain @Model.Number</h6>
+            <p class="card-text">@Model.Description</p>
+            @if (studyTime > 0)
+            {
+                <small class="text-muted">Study time: @minutes m @seconds s</small><br>
+            }
+            <a href="/Domain@Model.Number" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+    </div>
+</div>
